@@ -6,7 +6,7 @@
 #    By: vmulder <vmulder@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/22 14:18:40 by vmulder        #+#    #+#                 #
-#    Updated: 2019/04/24 14:59:40 by vmulder       ########   odam.nl          #
+#    Updated: 2019/04/25 14:47:15 by vmulder       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ SRC_PATH = srcs
 HEADER = ../incl/printf.h
 
 ## SOURCES ##
-SOURCES = ft_printf.c checkflags.c
+SOURCES = ft_printf.c checkflags.c checkwidth.c checkprecision.c checklengmodif.c \
+			ft_checkspecifier.c
 
 ## OBJECTS ##
 SRCS = $(addprefix $(SRC_PATH)/,$(SOURCES))

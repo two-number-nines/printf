@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/24 12:36:26 by vmulder        #+#    #+#                */
-/*   Updated: 2019/04/25 15:47:58 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/04/25 16:32:40 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,10 @@ void	ft_checkflagsif(t_struct *val)
 
 void	ft_checkflags(t_struct *val)
 {
-	printf("checkflagsnotloop\n");
 	while (val->fmt[val->i] == '-' || val->fmt[val->i] == '+'
 			|| val->fmt[val->i] == ' ' || val->fmt[val->i] == '#'
 			|| val->fmt[val->i] == 0)
 	{
-		printf("checkflagloop\n");
 		ft_checkflagsif(val);
 		val->i++;
 	}
