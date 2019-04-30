@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/22 15:33:29 by vmulder        #+#    #+#                */
-/*   Updated: 2019/04/26 18:22:53 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/04/30 12:57:30 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,6 @@ void	ft_checklenmod(t_struct *val);
 **		ft_checkspecifier.c
 */
 
-void	ft_cpy_to_buf(char buf[], int *i, char **s);
-void	put_width_buf(t_struct *val);
 void	ft_checkspecifier(t_struct *val, va_list *lp);
 
 /*
@@ -79,5 +77,14 @@ void	ft_checkspecifier(t_struct *val, va_list *lp);
 
 void	ft_converter_c(t_struct *val, va_list *lp);
 void	ft_converter_s(t_struct *val, va_list *lp);
+void	ft_converter_p(t_struct *val, va_list *lp);
+
+/*
+**		utils.c
+*/
+
+void	ft_cpy_to_buf(t_struct *val, char *s);
+void	ft_cpy_to_buf_lft(t_struct *val, char *s);
+void	put_width_buf(t_struct *val);
 
 #endif

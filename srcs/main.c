@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/22 15:42:55 by vmulder        #+#    #+#                */
-/*   Updated: 2019/04/26 18:06:23 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/04/30 11:34:08 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,11 @@ int		ft_printf(const char *format, ...)
 
 int		main(void)
 {
-	ft_printf("my printf: %5skoek\n", "abcdefg");
-	printf("real printf: %5skoek\n", "abcdefg");
+	int *i;
+
+	i = 0;
+	ft_printf("my   printf: %5p\n", &i);
+	printf("real printf: %5p\n", &i);
 	//ft_printf("my printf: %00ckoek\n", 'c');
 	//printf("real printf: %00ckoek\n", 'c');
 	//printf("max width: %005d", 9);
