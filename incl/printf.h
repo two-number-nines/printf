@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/22 15:33:29 by vmulder        #+#    #+#                */
-/*   Updated: 2019/04/30 18:46:05 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/01 12:16:03 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,12 @@ void	ft_converter_p(t_struct *val, va_list *lp);
 void	ft_converter_perc(t_struct *val);
 
 /*
+**		converter.c
+*/
+
+void	ft_converter_di(t_struct *val, va_list *lp);
+
+/*
 **		utils.c
 */
 
@@ -89,5 +95,18 @@ void	ft_cpy_to_buf(t_struct *val, char *s);
 void	ft_cpy_to_buf_lft(t_struct *val, char *s);
 void	put_width_buf(t_struct *val);
 char	*long_to_a_string(long long l);
+
+/*
+**		utilsd.c
+*/
+
+void	ft_cpy_to_buf_lft_int(t_struct *val);
+void	ft_cpy_to_buf_int(t_struct *val);
+
+/*
+**		utilsmain.c
+*/
+
+void	reset_flags(t_struct *val);
 
 #endif

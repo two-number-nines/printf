@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/22 15:42:55 by vmulder        #+#    #+#                */
-/*   Updated: 2019/04/30 18:16:19 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/01 12:22:56 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_strloop(t_struct val, va_list *lp)
 		{
 			val.i++;
 			arghandeler(&val, lp);
-			val.width = 0;
+			reset_flags(&val);
 			val.bi = (int)strlen(val.buf);
 		}
 		val.buf[val.bi] = val.fmt[val.i];
@@ -72,8 +72,8 @@ int		main(void)
 	int *i;
 
 	i = 0;
-	ft_printf("my   printf: %20skoek 2nd: %p 3th: %-10c %%\n", "blabla", &i, 'A');
-	printf("real printf: %20skoek 2nd: %p 3th: %-10c %%\n", "blabla", &i, 'A');
+	ft_printf("my   printf string: %20skoek pointer: %p char: %-10c perc: %% int: %+-10d\n", "blabla", &i, 'A', 10);
+	printf("real printf string: %20skoek pointer: %p char: %-10c perc: %% int: %+-10d\n", "blabla", &i, 'A', 10);
 	//ft_printf("my printf: %00ckoek\n", 'c');
 	//printf("real printf: %00ckoek\n", 'c');
 	//printf("max width: %005d", 9);

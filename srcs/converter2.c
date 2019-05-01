@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/30 18:12:10 by vmulder        #+#    #+#                */
-/*   Updated: 2019/04/30 18:53:08 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/01 12:19:17 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,23 @@ void	typecastthisshit(t_struct *val, va_list *lp)
 	if (val->h)
 	{
 		val->d = va_arg(*lp, int);
-		(short int)val->d;
+		val->d = (short int)val->d;
 	}
-	if (val->hh)
+	else if (val->hh)
 	{
 		val->d = va_arg(*lp, int);
-		(signed char)val->d;
+		val->d = (signed char)val->d;
 	}
-	if (val->l)
+	else if (val->l)
 		val->d = va_arg(*lp, long int);
-	if (val->ll)
+	else if (val->ll)
 		val->d = va_arg(*lp, long long int);
+	else
+		val->d = va_arg(*lp, int);
+	
 }
 
-void	ft_converter_d(t_struct *val, va_list *lp)
+void	ft_converter_di(t_struct *val, va_list *lp)
 {
 	int		tmp;
 
@@ -40,8 +43,8 @@ void	ft_converter_d(t_struct *val, va_list *lp)
 		put_width_buf(val);
 	if (ft_getdigits(val->d) >= val->width)
 		tmp = ft_getdigits(val->d);
-	//if (val->flagmin || tmp)
-	//	ft_cpy_to_buf_lft(val, s);
-	//else
-	//	ft_cpy_to_buf(val, s);
+	if (val->flagmin || tmp)
+		ft_cpy_to_buf_lft_int(val);
+	else
+		ft_cpy_to_buf_int(val);
 }
