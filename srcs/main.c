@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/22 15:42:55 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/01 12:22:56 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/01 15:01:45 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,9 @@ int		main(void)
 	int *i;
 
 	i = 0;
-	ft_printf("my   printf string: %20skoek pointer: %p char: %-10c perc: %% int: %+-10d\n", "blabla", &i, 'A', 10);
-	printf("real printf string: %20skoek pointer: %p char: %-10c perc: %% int: %+-10d\n", "blabla", &i, 'A', 10);
+	printf("%u\n", 2147483649);
+	//printf("real str: %20sk ptr: %p chr: %-10c prc: %% int: %-+10d oct: %o uns dec: %u\n", "bla", &i, 'A', 54, 11, 2147483649);
+	//ft_printf("my   str: %20sk ptr: %p chr: %-10c prc: %% int: %-+10d oct: %o uns dec: %u\n", "bla", &i, 'A', 54, 11, 2147483649);
 	//ft_printf("my printf: %00ckoek\n", 'c');
 	//printf("real printf: %00ckoek\n", 'c');
 	//printf("max width: %005d", 9);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   converter2.c                                       :+:    :+:            */
+/*   converterDIU.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/30 18:12:10 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/01 12:19:17 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/01 14:48:14 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,13 @@ void	typecastthisshit(t_struct *val, va_list *lp)
 	
 }
 
-void	ft_converter_di(t_struct *val, va_list *lp)
+void	ft_converter_diou(t_struct *val, va_list *lp)
 {
 	int		tmp;
 
 	tmp = 0;
+	if (val->fmt[val->i] == 'u')
+		val->d = va_arg(*lp, unsigned int);
 	typecastthisshit(val, lp);
 	if (val->width)
 		put_width_buf(val);

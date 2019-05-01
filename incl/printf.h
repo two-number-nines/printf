@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/22 15:33:29 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/01 12:16:03 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/01 14:47:50 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	ft_converter_perc(t_struct *val);
 **		converter.c
 */
 
-void	ft_converter_di(t_struct *val, va_list *lp);
+void	ft_converter_diou(t_struct *val, va_list *lp);
 
 /*
 **		utils.c
