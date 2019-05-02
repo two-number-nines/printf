@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   utilsDIU.c                                         :+:    :+:            */
+/*   utilsUX.c                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/04/30 18:25:24 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/01 14:36:26 by vmulder       ########   odam.nl         */
+/*   Created: 2019/05/02 15:56:03 by vmulder        #+#    #+#                */
+/*   Updated: 2019/05/02 16:31:32 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/printf.h"
 
-int		ft_supersayenbased(t_struct *val)
-{
-	if (val->fmt[val->i] == 'd' || val->fmt[val->i] == 'i' ||
-		val->fmt[val->i] == 'i')
-		return (10);
-	else if (val->fmt[val->i] == 'o')
-		return (8);
-	return (0);
-}
-
-void	ft_cpy_to_buf_int_if(t_struct *val, int i)
+static void	ft_cpy_to_buf_int_if(t_struct *val, int i)
 {
 	val->bi -= i;
-	if (val->flagplus && val->d >= 0)
+	if (val->flagplus && val->ud > 0)
 	{
 		i++;
 		val->bi -= i;
@@ -37,7 +27,7 @@ void	ft_cpy_to_buf_int_if(t_struct *val, int i)
 	}
 }
 
-void	ft_cpy_to_buf_int(t_struct *val)
+void	ft_cpy_to_buf_int_u(t_struct *val)
 {
 	int		b;
 	int		i;
@@ -45,7 +35,7 @@ void	ft_cpy_to_buf_int(t_struct *val)
 	char	*s;
 
 	b = ft_supersayenbased(val);
-	s = ft_itoa_base(val->d, b);
+	s = ft_itoa_base_u(val->ud, b);
 	i = ft_strlen(s);
 	j = 0;
 	ft_cpy_to_buf_int_if(val, i);
@@ -57,7 +47,7 @@ void	ft_cpy_to_buf_int(t_struct *val)
 	}
 }
 
-void	ft_cpy_to_buf_lft_int(t_struct *val)
+void	ft_cpy_to_buf_lft_int_u(t_struct *val)
 {
 	int		b;
 	int		j;
@@ -65,9 +55,9 @@ void	ft_cpy_to_buf_lft_int(t_struct *val)
 
 	j = 0;
 	b = ft_supersayenbased(val);
-	s = ft_itoa_base(val->d, b);
+	s = ft_itoa_base_u(val->ud, b);
 	val->bi = val->tmpi;
-	if (val->flagplus && val->d >= 0)
+	if (val->flagplus && val->ud > 0)
 	{
 		val->buf[val->bi] = '+';
 		val->bi++;

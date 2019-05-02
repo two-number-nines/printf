@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   converterDIU.c                                     :+:    :+:            */
+/*   converterDIO.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/30 18:12:10 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/01 14:48:14 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/02 16:25:34 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	typecastthisshit(t_struct *val, va_list *lp)
 {
 	if (val->h)
 	{
-		val->d = va_arg(*lp, int);
 		val->d = (short int)val->d;
+		val->d = va_arg(*lp, int);
 	}
 	else if (val->hh)
 	{
@@ -25,7 +25,9 @@ void	typecastthisshit(t_struct *val, va_list *lp)
 		val->d = (signed char)val->d;
 	}
 	else if (val->l)
+	{
 		val->d = va_arg(*lp, long int);
+	}
 	else if (val->ll)
 		val->d = va_arg(*lp, long long int);
 	else
@@ -33,13 +35,11 @@ void	typecastthisshit(t_struct *val, va_list *lp)
 	
 }
 
-void	ft_converter_diou(t_struct *val, va_list *lp)
+void	ft_converter_dio(t_struct *val, va_list *lp)
 {
 	int		tmp;
 
 	tmp = 0;
-	if (val->fmt[val->i] == 'u')
-		val->d = va_arg(*lp, unsigned int);
 	typecastthisshit(val, lp);
 	if (val->width)
 		put_width_buf(val);

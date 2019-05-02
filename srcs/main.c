@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/22 15:42:55 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/01 15:01:45 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/02 14:41:15 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,14 @@ void	ft_initializer(const char *format, va_list *lp)
 	val.i = 0;
 	val.bi = 0;
 	val.fmt = format;
+	val.width = 0;
+	val.precis = 0;
+	val.length = 0;
+	val.hh = 0;
+	val.h = 0;
+	val.l = 0;
+	val.ll = 0;
+	val.L = 0;
 	ft_bzero(val.buf, BUFF_FULL);
 	ft_strloop(val, lp);
 }
@@ -72,12 +80,10 @@ int		main(void)
 	int *i;
 
 	i = 0;
-	printf("%u\n", 2147483649);
-	//printf("real str: %20sk ptr: %p chr: %-10c prc: %% int: %-+10d oct: %o uns dec: %u\n", "bla", &i, 'A', 54, 11, 2147483649);
-	//ft_printf("my   str: %20sk ptr: %p chr: %-10c prc: %% int: %-+10d oct: %o uns dec: %u\n", "bla", &i, 'A', 54, 11, 2147483649);
-	//ft_printf("my printf: %00ckoek\n", 'c');
-	//printf("real printf: %00ckoek\n", 'c');
-	//printf("max width: %005d", 9);
-	//printf("real printf: c\n");
+	//printf("%u\n", (unsigned int)2147483648);
+	printf("unsi: %u\n", (unsigned int)2147483647);
+	ft_printf("unsi: %u\n", (unsigned int)2147483647);
 	return (0);
 }
+
+//need to fix the flags cause it segfaults,  floats need to be done annd why cant i give %u a higher int
