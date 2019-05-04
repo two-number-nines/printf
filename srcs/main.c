@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/22 15:42:55 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/04 16:15:08 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/04 17:43:25 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ int		main(void)
 
 	i = 0;
 	//printf("%u\n", (unsigned int)2147483648);
-	printf("hex: %#x oct: %#o\n", 501234, 200);
-	ft_printf("hex: %x oct: %o\n", 501234, 200);
+	printf("hex: %10o oct: %-20o\n", 501234, 200);
+	ft_printf("hex: %10o oct: %-20o\n", 501234, 200);
 	return (0);
 }
 

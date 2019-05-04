@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   utilsDIO.c                                         :+:    :+:            */
+/*   utilsDI.c                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/30 18:25:24 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/04 13:59:24 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/04 16:38:51 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int		ft_supersayenbased(t_struct *val)
 
 void	ft_cpy_to_buf_int_if(t_struct *val, int i)
 {
-	val->bi -= i;
 	if (val->flagplus && val->d >= 0)
 	{
 		i++;
@@ -34,6 +33,8 @@ void	ft_cpy_to_buf_int_if(t_struct *val, int i)
 			val->buf[val->bi] = '+';
 		val->bi++;
 	}
+	else
+		val->bi -= i;
 }
 
 void	ft_cpy_to_buf_int(t_struct *val)

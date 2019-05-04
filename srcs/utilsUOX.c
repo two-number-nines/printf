@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   utilsUX.c                                          :+:    :+:            */
+/*   utilsUOX.c                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/02 15:56:03 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/02 16:31:32 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/04 17:43:14 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,16 @@
 
 static void	ft_cpy_to_buf_int_if(t_struct *val, int i)
 {
-	val->bi -= i;
-	if (val->flagplus && val->ud > 0)
+	if (val->flaghasj && val->specifier == 'o')
 	{
 		i++;
 		val->bi -= i;
-		if (val->flagnull)
-			val->buf[val->tmpi] = '+';
-		else
-			val->buf[val->bi] = '+';
+		val->buf[val->bi] = '0';
 		val->bi++;
 	}
+	else
+		val->bi -= i;
+	
 }
 
 void	ft_cpy_to_buf_int_u(t_struct *val)
@@ -57,9 +56,9 @@ void	ft_cpy_to_buf_lft_int_u(t_struct *val)
 	b = ft_supersayenbased(val);
 	s = ft_itoa_base_u(val->ud, b);
 	val->bi = val->tmpi;
-	if (val->flagplus && val->ud > 0)
+	if (val->flaghasj && val->specifier == 'o')
 	{
-		val->buf[val->bi] = '+';
+		val->buf[val->bi] = '0';
 		val->bi++;
 	}
 	while (s[j])
