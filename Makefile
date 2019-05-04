@@ -6,7 +6,7 @@
 #    By: vmulder <vmulder@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/22 14:18:40 by vmulder        #+#    #+#                 #
-#    Updated: 2019/05/02 16:39:09 by vmulder       ########   odam.nl          #
+#    Updated: 2019/05/04 14:45:38 by vmulder       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,8 @@ SRC_PATH  = srcs
 
 ### SOURCES ###
 SOURCES = main.c checkflags.c checkwidth.c checkpresicion.c checklengmodif.c \
-			checkspecifier.c converterCSP.c utilsCSP.c converterDIO.c utilsDIO.c \
-			utilsMAIN.c converterUX.c utilsUX.c
+			checkspecifier.c converterCSP.c utilsCSP.c converterDI.c utilsDI.c \
+			utilsMAIN.c converterUOX.c utilsUOX.c
 			
 ### OBJECTS ###
 

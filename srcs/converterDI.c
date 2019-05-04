@@ -1,46 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   converterDIO.c                                     :+:    :+:            */
+/*   converterDI.c                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/30 18:12:10 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/02 16:25:34 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/04 16:11:57 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/printf.h"
 
-void	typecastthisshit(t_struct *val, va_list *lp)
+void	typecastthisshit(t_struct *val)
 {
 	if (val->h)
-	{
 		val->d = (short int)val->d;
-		val->d = va_arg(*lp, int);
-	}
 	else if (val->hh)
-	{
-		val->d = va_arg(*lp, int);
 		val->d = (signed char)val->d;
-	}
 	else if (val->l)
-	{
-		val->d = va_arg(*lp, long int);
-	}
+		val->d = (long int)val->d;
 	else if (val->ll)
-		val->d = va_arg(*lp, long long int);
-	else
-		val->d = va_arg(*lp, int);
+		val->d = (long long int)val->d;
+	return ;
 	
 }
 
-void	ft_converter_dio(t_struct *val, va_list *lp)
+void	ft_converter_di(t_struct *val, va_list *lp)
 {
 	int		tmp;
 
 	tmp = 0;
-	typecastthisshit(val, lp);
+	val->d = va_arg(*lp, long long);
+	typecastthisshit(val);
 	if (val->width)
 		put_width_buf(val);
 	if (ft_getdigits(val->d) >= val->width)

@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/22 15:33:29 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/02 16:40:01 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/04 14:58:29 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,17 +83,16 @@ void	ft_converter_p(t_struct *val, va_list *lp);
 void	ft_converter_perc(t_struct *val);
 
 /*
-**		converterDIO.c
+**		converterDI.c
 */
 
-void	ft_converter_dio(t_struct *val, va_list *lp);
-void	typecastthisshit(t_struct *val, va_list *lp);
+void	ft_converter_di(t_struct *val, va_list *lp);
 
 /*
-**		converterUX.c
+**		converterUOX.c
 */
 
-void	ft_converter_ux(t_struct *val, va_list *lp);
+void	ft_converter_uox(t_struct *val, va_list *lp);
 
 
 /*
