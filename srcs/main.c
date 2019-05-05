@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/22 15:42:55 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/04 17:43:25 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/05 15:12:49 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,23 +45,9 @@ void	ft_initializer(const char *format, va_list *lp)
 {
 	t_struct val;
 
-	val.flagmin = 0;
-	val.flagplus = 0;
-	val.flagspace = 0;
-	val.flaghasj = 0;
-	val.flagnull = 0;
-	val.i = 0;
-	val.bi = 0;
-	val.fmt = format;
-	val.width = 0;
-	val.precis = 0;
-	val.length = 0;
-	val.hh = 0;
-	val.h = 0;
-	val.l = 0;
-	val.ll = 0;
-	val.L = 0;
+	ft_bzero(&val, sizeof(t_struct));
 	ft_bzero(val.buf, BUFF_FULL);
+	val.fmt = format;
 	ft_strloop(val, lp);
 }
 
@@ -81,8 +67,8 @@ int		main(void)
 
 	i = 0;
 	//printf("%u\n", (unsigned int)2147483648);
-	printf("hex: %10o oct: %-20o\n", 501234, 200);
-	ft_printf("hex: %10o oct: %-20o\n", 501234, 200);
+	printf("hex: %#10X hexcapital: %#10x\n", 501234, 200);
+	ft_printf("hex: %#10X hexcapital: %#10x\n", 501234, 200);
 	return (0);
 }
 

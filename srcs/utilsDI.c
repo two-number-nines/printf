@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/30 18:25:24 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/04 16:38:51 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/05 15:07:10 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int		ft_supersayenbased(t_struct *val)
 {
 	if (val->fmt[val->i] == 'o')
 		return (8);
-	else if (val->fmt[val->i] == 'x')
+	else if (val->fmt[val->i] == 'x' || val->fmt[val->i] == 'X')
 		return (16);
 	return (10);
 }

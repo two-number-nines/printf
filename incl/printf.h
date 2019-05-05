@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/22 15:33:29 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/04 17:40:33 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/05 16:57:45 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,10 @@ typedef struct			s_struct {
 	int					L;
 	char				specifier;
 	char				buf[1000];
+	int					ret;
 }						t_struct;
 
+int		ft_printf(const char *format, ...);
 /*
 ** checkflags.c
 */

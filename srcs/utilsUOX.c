@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/02 15:56:03 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/04 17:43:14 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/05 15:08:01 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,52 @@ static void	ft_cpy_to_buf_int_if(t_struct *val, int i)
 		val->buf[val->bi] = '0';
 		val->bi++;
 	}
+	else if (val->flaghasj && val->specifier == 'x')
+	{
+		i += 2;
+		val->bi -= i;
+		val->buf[val->bi] = '0';
+		val->bi++;
+		val->buf[val->bi] = 'x';
+		val->bi++;
+	}
+	else if (val->flaghasj && val->specifier == 'X')
+	{
+		i += 2;
+		val->bi -= i;
+		val->buf[val->bi] = '0';
+		val->bi++;
+		val->buf[val->bi] = 'X';
+		val->bi++;
+	}
 	else
 		val->bi -= i;
-	
 }
 
-void	ft_cpy_to_buf_int_u(t_struct *val)
+static void	ft_cpy_to_buf_lft_int_u_if(t_struct *val)
+{
+	if (val->flaghasj && val->specifier == 'o')
+	{
+		val->buf[val->bi] = '0';
+		val->bi++;
+	}
+	else if (val->flaghasj && val->specifier == 'x')
+	{
+		val->buf[val->bi] = '0';
+		val->bi++;
+		val->buf[val->bi] = 'x';
+		val->bi++;
+	}
+	else if (val->flaghasj && val->specifier == 'X')
+	{
+		val->buf[val->bi] = '0';
+		val->bi++;
+		val->buf[val->bi] = 'X';
+		val->bi++;
+	}
+}
+
+void		ft_cpy_to_buf_int_u(t_struct *val)
 {
 	int		b;
 	int		i;
@@ -34,7 +74,10 @@ void	ft_cpy_to_buf_int_u(t_struct *val)
 	char	*s;
 
 	b = ft_supersayenbased(val);
-	s = ft_itoa_base_u(val->ud, b);
+	if (val->specifier == 'X')
+		s = ft_itoa_base_u_x(val->ud, b);
+	else 
+		s = ft_itoa_base_u(val->ud, b);
 	i = ft_strlen(s);
 	j = 0;
 	ft_cpy_to_buf_int_if(val, i);
@@ -46,7 +89,7 @@ void	ft_cpy_to_buf_int_u(t_struct *val)
 	}
 }
 
-void	ft_cpy_to_buf_lft_int_u(t_struct *val)
+void		ft_cpy_to_buf_lft_int_u(t_struct *val)
 {
 	int		b;
 	int		j;
@@ -54,13 +97,12 @@ void	ft_cpy_to_buf_lft_int_u(t_struct *val)
 
 	j = 0;
 	b = ft_supersayenbased(val);
-	s = ft_itoa_base_u(val->ud, b);
+	if (val->specifier == 'X')
+		s = ft_itoa_base_u_x(val->ud, b);
+	else 
+		s = ft_itoa_base_u(val->ud, b);
 	val->bi = val->tmpi;
-	if (val->flaghasj && val->specifier == 'o')
-	{
-		val->buf[val->bi] = '0';
-		val->bi++;
-	}
+	ft_cpy_to_buf_lft_int_u_if(val);
 	while (s[j])
 	{
 		val->buf[val->bi] = s[j];
