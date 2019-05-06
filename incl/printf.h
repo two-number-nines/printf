@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/22 15:33:29 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/05 16:57:45 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/06 15:20:26 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 # define BUFF_FULL 999
 
 typedef struct			s_struct {
-	long long			d;
+	long double			f;
+	signed long long	d;
 	unsigned long long	ud;
 	int					tmpi;
 	int					flagmin;
@@ -45,56 +46,28 @@ typedef struct			s_struct {
 }						t_struct;
 
 int		ft_printf(const char *format, ...);
+
 /*
-** checkflags.c
+**		checks
 */
 
 void	ft_checkflags(t_struct *val);
-
-/*
-** checkwidth.c
-*/
-
 void	ft_checkwidth(t_struct *val, va_list *lp);
-
-/*
-** checkpresicion.c
-*/
-
 void	ft_checkprecision(t_struct *val, va_list *lp);
-
-/*
-** ft_checklenmodif.c
-*/
-
 void	ft_checklenmod(t_struct *val);
-
-/*
-**		ft_checkspecifier.c
-*/
-
 void	ft_checkspecifier(t_struct *val, va_list *lp);
 
 /*
-**		converter.c
+**		converters
 */
 
 void	ft_converter_c(t_struct *val, va_list *lp);
 void	ft_converter_s(t_struct *val, va_list *lp);
 void	ft_converter_p(t_struct *val, va_list *lp);
 void	ft_converter_perc(t_struct *val);
-
-/*
-**		converterDI.c
-*/
-
 void	ft_converter_di(t_struct *val, va_list *lp);
-
-/*
-**		converterUOX.c
-*/
-
 void	ft_converter_uox(t_struct *val, va_list *lp);
+void	ft_converter_f(t_struct *val, va_list *lp);
 
 
 /*
@@ -120,6 +93,14 @@ int		ft_supersayenbased(t_struct *val);
 
 void	ft_cpy_to_buf_lft_int_u(t_struct *val);
 void	ft_cpy_to_buf_int_u(t_struct *val);
+
+/*
+**		utils_f.c
+*/
+
+void	ft_cpy_to_buf_lft_int_f(t_struct *val);
+void	ft_cpy_to_buf_int_f(t_struct *val);
+char	*ftoa(float n, char *res, int afterpoint);
 
 /*
 **		utilsmain.c

@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/30 18:25:24 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/05 15:07:10 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/06 16:10:28 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,35 +23,63 @@ int		ft_supersayenbased(t_struct *val)
 
 void	ft_cpy_to_buf_int_if(t_struct *val, int i)
 {
-	if (val->flagplus && val->d >= 0)
+	if (val->precis)
+		i = val->precis;
+	if (val->flagplus || val->d < 0)
 	{
 		i++;
 		val->bi -= i;
 		if (val->flagnull)
-			val->buf[val->tmpi] = '+';
+		{
+			if (val->flagplus && val->d > 0)
+				val->buf[val->tmpi] = '+';
+			else
+				val->buf[val->tmpi] = '-';
+		}
 		else
-			val->buf[val->bi] = '+';
+		{
+			if (val->flagplus && val->d > 0)
+				val->buf[val->bi] = '+';
+			else
+				val->buf[val->bi] = '-';
+		}
 		val->bi++;
 	}
 	else
 		val->bi -= i;
 }
-
+/*
+	if (val->flagplus || val->d < 0)
+	{
+		if (val->flagplus && val->d > 0)
+			val->buf[val->bi] = '+';
+		else
+			val->buf[val->bi] = '-';
+			*/
 void	ft_cpy_to_buf_int(t_struct *val)
 {
-	int		b;
 	int		i;
 	int		j;
 	char	*s;
+	int		a;
 
-	b = ft_supersayenbased(val);
-	s = ft_itoa_base_u(val->d, b);
+	a = val->precis;
+	s = ft_itoa(val->d);
 	i = ft_strlen(s);
 	j = 0;
 	ft_cpy_to_buf_int_if(val, i);
+	while (val->precis - i > 0)
+	{
+		val->buf[val->bi] = '0';
+		val->bi++;
+		val->precis--;
+	}
 	while (s[j])
 	{
-		val->buf[val->bi] = s[j];
+		if (!(s[j] == '-' && a))
+			val->buf[val->bi] = s[j];
+		else
+			val->buf[val->bi] = '0';
 		val->bi++;
 		j++;
 	}
@@ -59,22 +87,36 @@ void	ft_cpy_to_buf_int(t_struct *val)
 
 void	ft_cpy_to_buf_lft_int(t_struct *val)
 {
-	int		b;
 	int		j;
 	char	*s;
+	int		i;
+	int		a;
 
 	j = 0;
-	b = ft_supersayenbased(val);
-	s = ft_itoa_base_u(val->d, b);
+	a = val->precis;
+	s = ft_itoa(val->d);
+	i = ft_strlen(s);
 	val->bi = val->tmpi;
-	if (val->flagplus && val->d >= 0)
+	if (val->flagplus || val->d < 0)
 	{
-		val->buf[val->bi] = '+';
+		if (val->flagplus && val->d > 0)
+			val->buf[val->bi] = '+';
+		else
+			val->buf[val->bi] = '-';
 		val->bi++;
+	}
+	while (val->precis - i > 0)
+	{
+		val->buf[val->bi] = '0';
+		val->bi++;
+		val->precis--;
 	}
 	while (s[j])
 	{
-		val->buf[val->bi] = s[j];
+		if (!(s[j] == '-' && a))
+			val->buf[val->bi] = s[j];
+		else
+			val->buf[val->bi] = '0';
 		val->bi++;
 		j++;
 	}
