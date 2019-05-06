@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/30 18:25:24 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/06 16:41:09 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/06 16:52:36 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_cpy_to_buf_int_if(t_struct *val, int i)
 {
 	if (val->precis)
 		i = val->precis;
-	if (val->flagplus || val->d < 0)
+	if ((val->flagplus && val->d > 0) || (val->d < 0 && val->precis))
 	{
 		i++;
 		val->bi -= i;
