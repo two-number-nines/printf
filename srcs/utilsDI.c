@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/30 18:25:24 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/06 16:10:28 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/06 16:41:09 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,31 +31,24 @@ void	ft_cpy_to_buf_int_if(t_struct *val, int i)
 		val->bi -= i;
 		if (val->flagnull)
 		{
-			if (val->flagplus && val->d > 0)
-				val->buf[val->tmpi] = '+';
-			else
+			if (val->d < 0)
 				val->buf[val->tmpi] = '-';
+			else
+				val->buf[val->tmpi] = '+';
 		}
 		else
 		{
-			if (val->flagplus && val->d > 0)
-				val->buf[val->bi] = '+';
-			else
+			if (val->d < 0)
 				val->buf[val->bi] = '-';
+			else
+				val->buf[val->bi] = '+';
 		}
 		val->bi++;
 	}
 	else
 		val->bi -= i;
 }
-/*
-	if (val->flagplus || val->d < 0)
-	{
-		if (val->flagplus && val->d > 0)
-			val->buf[val->bi] = '+';
-		else
-			val->buf[val->bi] = '-';
-			*/
+
 void	ft_cpy_to_buf_int(t_struct *val)
 {
 	int		i;
@@ -70,7 +63,10 @@ void	ft_cpy_to_buf_int(t_struct *val)
 	ft_cpy_to_buf_int_if(val, i);
 	while (val->precis - i > 0)
 	{
-		val->buf[val->bi] = '0';
+		if (val->d > 0)
+			val->buf[val->bi] = '-';
+		else
+			val->buf[val->bi] = '0';
 		val->bi++;
 		val->precis--;
 	}
@@ -107,6 +103,8 @@ void	ft_cpy_to_buf_lft_int(t_struct *val)
 	}
 	while (val->precis - i > 0)
 	{
+		if (a == val->precis && val->precis > 0 && val->d > 0)
+			val->buf[val->bi] = '-';
 		val->buf[val->bi] = '0';
 		val->bi++;
 		val->precis--;
