@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/02 16:01:21 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/06 10:49:29 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/13 12:01:45 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void	typecastthisshit_u(t_struct *val)
 		val->ud = (unsigned long int)val->ud;
 	else if (val->ll)
 		val->ud = (unsigned long long int)val->ud;
-	return ;
+		else
+		val->ud = (unsigned int)val->ud;
 	
 }
 

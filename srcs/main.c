@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/22 15:42:55 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/06 16:53:01 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/13 12:28:45 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,42 @@ int		main(void)
 	i = 0;
 	//long long d = -9223372036854775806;
 	//printf("%lld\n", -200);
-	printf("hex: %+30d hexcapital: %+30d\n", 200, 200);
-	ft_printf("hex: %+30d hexcapital: %+30d\n", 100, 200);
-	//ft_printf("hex: %+30.20lld\n", -100);
+	printf("hex: %.4d\n", -200);
+	ft_printf("hex: %.4d\n", -200);
+	// printf("\n");
+	// printf("\n");
+	// printf("hex: %+010d\n", 200);
+	// ft_printf("hex: %+010d\n", 200);
+	// printf("\n");
+	// printf("\n");
+	// printf("hex: % 050d\n", 200);
+	// ft_printf("hex: % 050d\n", 200);
+	// printf("\n");
+	// printf("\n");
+	printf("precision thats bigger thenbuf\n------------------------\n");
+	printf("hex: %10.20d\n", -200);
+	ft_printf("hex: %10.20d\n", -200);
+	printf("\n");
+	printf("\n");
+	// printf("precision with 0 buf\n------------------------\n");
+	// printf("hex: %010.5d\n", -200);
+	// ft_printf("hex: %010.5d\n", -200);
+	printf("\n");
+	printf("\n");
+	// printf("precision with space buf\n------------------------\n");
+	// printf("hex: % 10.5d\n", -200);
+	// ft_printf("hex: % 10.5d\n", -200);
+	// printf("\n");
+	// printf("\n");
+	// printf("precision with 0 buf\n------------------------\n");
+	// printf("hex: %+10.5d\n", -200);
+	// ft_printf("hex: %+10.5d\n", -200);
+	// printf("\n");
+	// printf("\n");
+	// printf("precision with space buf\n------------------------\n");
+	// printf("hex: % 10.5d\n", 200);
+	// ft_printf("hex: % 10.5d\n", 200);
+	// ft_printf("hex: %.5d\n", -200);
+	// ft_printf("hex: %+30.20lld\n", -100);
 	return (0);
 }
