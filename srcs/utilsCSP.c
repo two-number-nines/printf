@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/30 11:49:10 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/13 11:53:27 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/14 11:31:48 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ void	put_width_buf(t_struct *val)
 	int i;
 
 	i = val->width;
-	if (val->flagplus || val->flagspace || val->d < 0)
-		i--;
 	while (i)
 	{
 		if (val->flagnull && !val->precis)

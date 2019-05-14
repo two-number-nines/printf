@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/30 18:12:10 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/13 12:35:28 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/14 16:15:41 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,11 @@ void	ft_converter_di(t_struct *val, va_list *lp)
 	tmp = 0;
 	val->d = va_arg(*lp, long long);
 	typecastthisshit(val);
-	if (val->width > val->precis)
-		put_width_buf(val);
+	put_width_buf(val);
 	if (ft_getdigits(val->d) >= val->width)
 		tmp = ft_getdigits(val->d);
 	if (val->flagmin || tmp || (val->precis >= val->width))
-		ft_cpy_to_buf_lft_int(val);
+	 	ft_cpy_to_buf_lft_int(val);
 	else
-	{
-		if (val->precis)
-			put_precis_buf(val);
-			//ft_cpy_to_buf_int(val);
-	}
+		ft_cpy_to_buf_int(val);
 }
