@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/30 18:25:24 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/14 17:00:28 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/15 11:52:50 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char *ft_fix_precis(t_struct *val, char *s)
 	tp = 0;
 	if (val->precis)
 		tp = val->precis - ft_strlen(s);
-	ns = (char *)malloc(sizeof(char) * 1);
+	ns = (char *)malloc(sizeof(char) * tp + ft_strlen(s) + 1);
 	if (val->flagspace)
 		ns[i] = ' ';
 	if (val->flagplus)
@@ -47,7 +47,7 @@ char *ft_fix_precis(t_struct *val, char *s)
 		tp++;
 		i++;
 	}
-	ns[i] = '\0'; 
+	ns[i] = '\0';
 	free(s);
 	return (ns);
 }
@@ -69,6 +69,7 @@ void	ft_cpy_to_buf_lft_int(t_struct *val)
 		j++;
 	}
 	val->bi = val->width + val->tmpi;
+	free(ns);
 }
 
 void	ft_cpy_to_buf_int(t_struct *val)
@@ -89,6 +90,7 @@ void	ft_cpy_to_buf_int(t_struct *val)
 		val->bi++;
 		j++;
 	}
+	free(ns);
 }
 
 int		ft_supersayenbased(t_struct *val)
