@@ -6,13 +6,13 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/30 18:25:24 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/15 11:52:50 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/15 17:50:45 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/printf.h"
 
-char *ft_fix_precis(t_struct *val, char *s)
+static char *ft_fix_precis(t_struct *val, char *s)
 {
 	char	*ns;
 	int		i;
@@ -20,7 +20,7 @@ char *ft_fix_precis(t_struct *val, char *s)
 
 	i = 0;
 	tp = 0;
-	if (val->precis)
+	if (val->precis > (int)ft_strlen(s))
 		tp = val->precis - ft_strlen(s);
 	ns = (char *)malloc(sizeof(char) * tp + ft_strlen(s) + 1);
 	if (val->flagspace)
@@ -84,6 +84,8 @@ void	ft_cpy_to_buf_int(t_struct *val)
 	i = ft_strlen(ns);
 	j = 0;
 	val->bi -= i;
+	if (val->bi < val->tmpi)
+		val->bi = val->tmpi;
 	while (ns[j])
 	{
 		val->buf[val->bi] = ns[j];

@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/22 15:42:55 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/15 11:56:44 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/15 18:46:37 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	ft_initializer(const char *format, va_list *lp)
 	ft_bzero(&val, sizeof(t_struct));
 	ft_bzero(val.buf, BUFF_FULL);
 	val.fmt = format;
+	val.precis = -1;
 	ft_strloop(val, lp);
 }
 
@@ -66,48 +67,50 @@ int		main(void)
 	int *i;
 
 	i = 0;
-	// long long d = -9223372036854775806;
-	// printf("%lld\n", -200);
-	printf("hex: %i bla\n", 200);
-	ft_printf("hex: %i bla\n", 200);
-	printf("\n");
-	printf("\n");
-	printf("hex: %+il\n", 200);
-	ft_printf("hex: %+il\n", 200);
-	printf("\n");
-	printf("\n");
-	printf("hex: %0.30il\n", 200);
-	ft_printf("hex: %0.30il\n", 200);
-	printf("\n");
-	printf("\n");
-	printf("hex: %.20il\n", -200);
-	ft_printf("hex: %.20il\n", -200);
-	printf("\n");
-	printf("\n");
-	printf("hex: %-+10.20il\n", 200);
-	ft_printf("hex: %-+10.20il\n", 200);
-	printf("\n");
-	printf("\n");
-	printf("hex: %010.5il\n", -200);
-	ft_printf("hex: %010.5il\n", -200);
-	printf("\n");
-	printf("\n");
-	printf("hex: % 10.5il\n", -200);
-	ft_printf("hex: % 10.5il\n", -200);
-	printf("\n");
-	printf("\n");
-	printf("hex: %+10.5il\n", -200);
-	ft_printf("hex: %+10.5il\n", -200);
-	printf("\n");
-	printf("\n");
-	printf("hex: %010.5il\n", 200);
-	ft_printf("hex: %010.5il\n", 200);
-	printf("\n");
-	printf("\n");
-	printf("hex: % 10.5il\n", 200);
-	ft_printf("hex: % 10.5il\n", 200);
+	printf("hex: %.0s bla\n", "kakhoofd111");
+	ft_printf("hex: %.0s bla\n", "kakhoofd111");
 	// printf("\n");
 	// printf("\n");
+	// printf("hex: %+dl\n", 200);
+	// ft_printf("hex: %+dl\n", 200);
+	// printf("\n");
+	// printf("\n");
+	// printf("hex: %015.0dl\n", 200);
+	// ft_printf("hex: %015.0dl\n", 200);
+	// printf("\n");
+	// printf("\n");
+	// printf("hex: %15.0dl\n", -200);
+	// ft_printf("hex: %15.0dl\n", -200);
+	// printf("\n");
+	// printf("\n");
+	// printf("hex: %-10dl\n", 200);
+	// ft_printf("hex: %-10dl\n", 200);
+	// printf("\n");
+	// printf("\n");
+	// printf("hex: %010ldl\n", 100000000000);
+	// ft_printf("hex: %010ldl\n", 100000000000);
+	// printf("\n");
+	// printf("\n");
+	// printf("hex: %010.15dl\n", 200);
+	// ft_printf("hex: %010.15dl\n", 200);
+	// printf("\n");
+	// printf("\n");
+	// printf("hex: %#10Xl\n", -200);
+	// ft_printf("hex: %#10Xl\n", -200);
+	// printf("\n");
+	// printf("\n");
+	// printf("hex: %-10Xl\n", -200);
+	// ft_printf("hex: %-10Xl\n", -200);
+	// printf("\n");
+	// printf("\n");
+	// printf("hex: %010Xl\n", 200);
+	// ft_printf("hex: %010Xl\n", 200);
+	// printf("\n");
+	// printf("\n");
+	// printf("hex: %#010.0Xl\n", 200);
+	// ft_printf("hex: %#010.0Xl\n", 200);
+	// printf("\n");
+	printf("\n");
 	// printf("hex: %+10.5d\n", 200);
 	// ft_printf("hex: %+10.5d\n", 200);
 	// printf("\n");

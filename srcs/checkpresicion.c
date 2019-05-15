@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/25 12:08:39 by vmulder        #+#    #+#                */
-/*   Updated: 2019/04/26 16:44:11 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/15 18:46:12 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,20 @@ void	ft_checkprecisionif(t_struct *val, va_list *lp)
 
 void	ft_checkprecision(t_struct *val, va_list *lp)
 {
+	int a;
+
+	a = 0;
 	if (val->fmt[val->i] == '.')
 	{
 		val->i++;
 		while ((val->fmt[val->i] >= '0' && val->fmt[val->i] <= '9')
 			|| val->fmt[val->i] == '*')
 		{
+			if (a == 0)
+				val->precis = 0;
 			ft_checkprecisionif(val, lp);
 			val->i++;
+			a++;
 		}
 	}
 }
