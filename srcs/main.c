@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/22 15:42:55 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/16 16:24:52 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/16 18:04:53 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ int		main(void)
 	float i;
 
 	i = 12345.004359;
-	printf("hex: %.4lf bla\n\n", i);
-	ft_printf("hex: %.4lf bla\n", i);
+	printf("hex: %.2lf bla\n\n", i);
+	ft_printf("hex: %.2lf bla\n", i);
 	// printf("\n");
 	// printf("\n");
 	// printf("hex: %50p bla\n", &i);

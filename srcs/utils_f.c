@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/06 11:04:02 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/16 16:24:07 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/16 18:22:21 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,43 +66,57 @@ static void	ft_cpy_to_buf_int_if(t_struct *val, int i)
 		val->bi -= i;
 }
 */
-long long ft_right_part(t_struct *val, float n)
+char	*ft_comb_part(t_struct *val, long long pleft, long long pright)
 {
-	int d;
-	long long r;
+	char *sl;
+	char *sr;
+	char *ns;
+	val->t = 0;
+	sr = ft_itoa(pright);
+	sl = ft_itoa(pleft);
+	ns = ft_strjoin(sl, sr);
+	printf("this is the combined string: %s\n", ns);
+	return (ns);
+}
+
+char *ft_combine_part(t_struct *val, float n, long long pleft)
+{
+	int			d;
+	long long	pright;
+	char *ns;
 
 	if (val->precis == -1)
 		d = 6;
 	else
 		d = val->precis;
-	
 	while (d)
 	{
 		n = n * 10;
 		d--;
+		if (n < 1)
+			val->t++;
 	}
 	if (n - (long long)n > 0.5)
 		n += 1;
-	r = n;
+	pright = n;
+	ns = ft_comb_part(val, pleft, pright);
 	printf("after the conversion: %f\n", n);
-	return (r);
+	printf("this is my after .: %lld\n", pright);
+	printf("this is how many zeros: %d\n", val->t);
+	return (ns);
 }
 
 void	ft_cpy_to_buf_int_f(t_struct *val)
 {
-	long long	leftp;
-	float		rightp;
-	int			i;
-	//int			j;
-	char		*s;
+	long long	pleft;
+	float		leftover;
 	
-	leftp = (long long)val->f;
-	s = ft_itoa(leftp);
-	rightp = val->f - (float)leftp;
-	i = ft_strlen(s);
-	printf("this is lpart: %lld\n", leftp);
-	printf("this is rpart: %f\n", rightp);
-	ft_right_part(val, rightp);
+	pleft = (long long)val->f;
+	//sl = ft_itoa(pleft);
+	leftover = val->f - (float)pleft;
+	// printf("this is lpart: %lld\n", pleft);
+	// printf("this is rpart: %f\n", leftover);
+	ft_combine_part(val, leftover, pleft);
 	//j = 0;
 	//ft_cpy_to_buf_int_if(val, i);
 	//while (s[j])
