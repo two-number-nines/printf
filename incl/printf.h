@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/22 15:33:29 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/14 11:32:03 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/16 14:16:28 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define BUFF_FULL 999
 
 typedef struct			s_struct {
-	long double			f;
+	double				f; 
 	signed long long	d;
 	unsigned long long	ud;
 	int					tmpi;

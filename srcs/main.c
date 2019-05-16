@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/22 15:42:55 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/16 11:19:51 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/16 16:24:52 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,39 +64,35 @@ int		ft_printf(const char *format, ...)
 
 int		main(void)
 {
-	int *i;
+	float i;
 
-	i = 0;
-	printf("hex: %-50p bla\n", &i);
-	ft_printf("hex: %-50p bla\n", &i);
-	printf("\n");
-	printf("\n");
-	printf("hex: %50p bla\n", &i);
-	ft_printf("hex: %50p bla\n", &i);
-	printf("\n");
-	printf("\n");
-	printf("hex: %#10.0xl\n", 0);
-	ft_printf("hex: %#10.0xl\n", 0);
+	i = 12345.004359;
+	printf("hex: %.4lf bla\n\n", i);
+	ft_printf("hex: %.4lf bla\n", i);
 	// printf("\n");
 	// printf("\n");
-	// printf("hex: %015.0dl\n", 200);
-	// ft_printf("hex: %015.0dl\n", 200);
+	// printf("hex: %50p bla\n", &i);
+	// ft_printf("hex: %50p bla\n", &i);
 	// printf("\n");
 	// printf("\n");
-	// printf("hex: %15.0dl\n", -200);
-	// ft_printf("hex: %15.0dl\n", -200);
+	// printf("hex: %#10.0xl\n", 0);
+	// ft_printf("hex: %#10.0xl\n", 0);
 	// printf("\n");
 	// printf("\n");
-	// printf("hex: %-10dl\n", 200);
-	// ft_printf("hex: %-10dl\n", 200);
+	// printf("hex: %%\n");
+	// ft_printf("hex: %%\n");
 	// printf("\n");
 	// printf("\n");
-	// printf("hex: %010ldl\n", 100000000000);
-	// ft_printf("hex: %010ldl\n", 100000000000);
+	// printf("hex: %-10xl\n", 200);
+	// ft_printf("hex: %-10xl\n", 200);
 	// printf("\n");
 	// printf("\n");
-	// printf("hex: %010.15dl\n", 200);
-	// ft_printf("hex: %010.15dl\n", 200);
+	// printf("hex: %-10lxl\n", 100000000000);
+	// ft_printf("hex: %-10lxl\n", 100000000000);
+	// printf("\n");
+	// printf("\n");
+	// printf("hex: %010.15xl\n", 200);
+	// ft_printf("hex: %010.15xl\n", 200);
 	// printf("\n");
 	// printf("\n");
 	// printf("hex: %#10Xl\n", -200);
