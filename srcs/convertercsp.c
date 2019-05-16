@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   convertercsp.c                                     :+:    :+:            */
+/*   converterCSP.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/26 17:52:57 by vmulder        #+#    #+#                */
-/*   Updated: 2019/04/30 18:21:57 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/16 11:04:40 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,9 @@ void	ft_converter_s(t_struct *val, va_list *lp)
 	tmp = 0;
 	if (val->width)
 		put_width_buf(val);
-	if ((int)ft_strlen(s) >= val->width)
-		tmp = ft_strlen(s);
+	if (val->precis >= val->width)
+		if ((int)ft_strlen(s) > val->width)
+			tmp = ft_strlen(s);
 	if (val->flagmin || tmp)
 		ft_cpy_to_buf_lft(val, s);
 	else
@@ -53,7 +54,8 @@ void	ft_converter_p(t_struct *val, va_list *lp)
 	if (val->width)
 		put_width_buf(val);
 	if ((int)ft_strlen(s) >= val->width)
-		tmp = ft_strlen(s);
+		if ((int)ft_strlen(s) > val->width)
+			tmp = ft_strlen(s);
 	if (val->flagmin || tmp)
 		ft_cpy_to_buf_lft(val, s);
 	else

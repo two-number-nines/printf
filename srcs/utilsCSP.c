@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/30 11:49:10 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/15 19:15:17 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/16 11:03:48 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static char	*precis_str(t_struct *val, char *s)
 	j = 0;
 	i = (int)ft_strlen(s);
 	ns = (char *)malloc(sizeof(char) * i + 1000);
-	if (val->precis < i)
+	if (val->precis < i && val->precis > 0)
 		i = val->precis;
 	while (i)
 	{
@@ -45,7 +45,7 @@ static char	*precis_str(t_struct *val, char *s)
 	//free(s);
 	return (ns);
 }
-// fix this motherfricker.
+
 void	put_width_buf(t_struct *val)
 {
 	int i;
@@ -53,7 +53,7 @@ void	put_width_buf(t_struct *val)
 	i = val->width;
 	while (i)
 	{
-		if ((val->flagnull && val->precis >= 0) || val->flagmin)
+		if ((val->flagnull && val->precis < 0))
 			val->buf[val->bi] = '0';
 		else
 			val->buf[val->bi] = ' ';

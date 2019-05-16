@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/30 18:25:24 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/15 17:50:45 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/16 11:20:52 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@ static char *ft_fix_precis(t_struct *val, char *s)
 		tp++;
 	if (val->flagspace || val->flagplus || val->d < 0)
 		i++;
+	if (val->d == 0 && val->precis == 0)
+	{
+		ns[i] = '\0';
+		return (ns);
+	}
 	while (tp)
 	{
 		ns[i] = '0';
