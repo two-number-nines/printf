@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/06 11:04:02 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/16 18:22:21 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/16 19:36:26 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,38 @@ char	*ft_comb_part(t_struct *val, long long pleft, long long pright)
 	char *sl;
 	char *sr;
 	char *ns;
-	val->t = 0;
+	int i;
+	int b;
+	
+	i = 0;
+	b = 0;
 	sr = ft_itoa(pright);
 	sl = ft_itoa(pleft);
-	ns = ft_strjoin(sl, sr);
+	ns = (char *)malloc(sizeof(char) * 100);
 	printf("this is the combined string: %s\n", ns);
+	while(sl[i])
+	{
+		ns[i] = sl[i];
+		i++;
+	}
+	if (sr[0] != '0' || val->precis)
+	{
+		ns[i] = '.';
+		i++;
+		while (val->t)
+		{
+			ns[i] = '0';
+			val->t--;
+			i++;
+		}
+		while (sr[b] && sr[0] != '0')
+		{
+			ns[i] = sr[b];
+			i++;
+			b++;
+		}
+	}
+	ns[i] = '\0';
 	return (ns);
 }
 
@@ -98,11 +125,12 @@ char *ft_combine_part(t_struct *val, float n, long long pleft)
 	}
 	if (n - (long long)n > 0.5)
 		n += 1;
-	pright = n;
+	pright = (long long)n;
 	ns = ft_comb_part(val, pleft, pright);
 	printf("after the conversion: %f\n", n);
 	printf("this is my after .: %lld\n", pright);
 	printf("this is how many zeros: %d\n", val->t);
+	printf("this is my ns string: %s\n", ns);
 	return (ns);
 }
 
