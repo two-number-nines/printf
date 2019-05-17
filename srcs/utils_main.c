@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   utilsMAIN.c                                        :+:    :+:            */
+/*   utils_main.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/01 12:11:58 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/15 16:05:26 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/17 21:28:43 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,10 @@ void			reset_flags(t_struct *val)
 	val->L = 0;
 }
 
-void			clear_buf(t_struct *val)
+void			ft_clearbuf(t_struct *val)
 {
-	val->ret = val->ret + write(1, val->buf, 999);
+	val->ret = val->ret + ft_strlen(val->buf);
+	write(1, val->buf, ft_strlen(val->buf));
 	val->bi = 0;
 	ft_bzero(val->buf, BUFF_FULL);
 }

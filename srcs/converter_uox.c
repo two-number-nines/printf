@@ -1,43 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   converterDI.c                                      :+:    :+:            */
+/*   converter_uox.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/04/30 18:12:10 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/14 16:15:41 by vmulder       ########   odam.nl         */
+/*   Created: 2019/05/02 16:01:21 by vmulder        #+#    #+#                */
+/*   Updated: 2019/05/17 22:08:59 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/printf.h"
 
-void	typecastthisshit(t_struct *val)
+static void	ft_typecaster_u(t_struct *val)
 {
 	if (val->h)
-		val->d = (short int)val->d;
+		val->ud = (unsigned short int)val->ud;
 	else if (val->hh)
-		val->d = (signed char)val->d;
+		val->ud = (unsigned char)val->ud;
 	else if (val->l)
-		val->d = (long int)val->d;
+		val->ud = (unsigned long int)val->ud;
 	else if (val->ll)
-		val->d = (long long)val->d;
+		val->ud = (unsigned long long int)val->ud;
 	else
-		val->d = (int)val->d;
+		val->ud = (unsigned int)val->ud;
 }
 
-void	ft_converter_di(t_struct *val, va_list *lp)
+void		ft_converter_uox(t_struct *val, va_list *lp)
 {
 	int		tmp;
 
 	tmp = 0;
-	val->d = va_arg(*lp, long long);
-	typecastthisshit(val);
+	val->ud = va_arg(*lp, unsigned long long);
+	ft_typecaster_u(val);
 	put_width_buf(val);
 	if (ft_getdigits(val->d) >= val->width)
 		tmp = ft_getdigits(val->d);
 	if (val->flagmin || tmp || (val->precis >= val->width))
-	 	ft_cpy_to_buf_lft_int(val);
+		ft_cpy_to_buf_lft_int_u(val);
 	else
-		ft_cpy_to_buf_int(val);
+		ft_cpy_to_buf_int_u(val);
 }

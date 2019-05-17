@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/06 10:34:36 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/17 14:06:24 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/17 22:07:54 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int		ft_getdigits_f(long double c)
 	return (i);
 }
 
-static void	typecastthisshit_f(t_struct *val)
+static void		ft_typecaster_f(t_struct *val)
 {
 	if (val->L)
 		val->f = (long double)val->f;
@@ -38,19 +38,19 @@ static void	typecastthisshit_f(t_struct *val)
 		val->f = (double)val->f;
 }
 
-void	ft_converter_f(t_struct *val, va_list *lp)
+void			ft_converter_f(t_struct *val, va_list *lp)
 {
 	int		tmp;
 
 	tmp = 0;
 	val->f = va_arg(*lp, double);
-	typecastthisshit_f(val);
+	ft_typecaster_f(val);
 	if (val->width)
-	 	put_width_buf(val);
+		put_width_buf(val);
 	if (ft_getdigits_f(val->f) >= val->width)
 		tmp = ft_getdigits_f(val->f);
 	if (val->flagmin || val->precis >= val->width)
-	ft_cpy_to_buf_lft_int_f(val);
+		ft_cpy_to_buf_lft_int_f(val);
 	else
 		ft_cpy_to_buf_int_f(val);
 }

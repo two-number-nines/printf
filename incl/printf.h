@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/22 15:33:29 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/17 14:14:20 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/17 18:33:08 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdio.h> ///////delete this
 # include "../libft/libft.h"
 
-# define BUFF_FULL 999
+# define BUFF_FULL 9999
 
 typedef struct			s_struct {
 	double				f; 
@@ -41,7 +41,7 @@ typedef struct			s_struct {
 	int					ll;
 	int					L;
 	char				specifier;
-	char				buf[1000];
+	char				buf[10000];
 	int					ret;
 }						t_struct;
 
@@ -107,5 +107,6 @@ char	*ftoa(float n, char *res, int afterpoint);
 */
 
 void	reset_flags(t_struct *val);
+void	ft_clearbuf(t_struct *val);
 
 #endif

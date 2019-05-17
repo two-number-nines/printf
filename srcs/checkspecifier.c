@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/25 14:43:00 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/06 11:19:15 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/17 22:05:42 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,11 @@ void	ft_checkspecifier(t_struct *val, va_list *lp)
 		ft_converter_di(val, lp);
 	else if (val->fmt[val->i] == 'u' || val->fmt[val->i] == 'x' ||
 			val->fmt[val->i] == 'o' || val->fmt[val->i] == 'X')
-			{
-				val->specifier = val->fmt[val->i];
-				ft_converter_uox(val, lp);
-			}
+	{
+		val->specifier = val->fmt[val->i];
+		ft_converter_uox(val, lp);
+	}
 	else if (val->fmt[val->i] == 'f')
-
 		ft_converter_f(val, lp);
 	val->i++;
 }

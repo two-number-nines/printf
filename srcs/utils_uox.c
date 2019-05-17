@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   utilsDI.c                                          :+:    :+:            */
+/*   utils_uox.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/04/30 18:25:24 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/16 12:08:50 by vmulder       ########   odam.nl         */
+/*   Created: 2019/05/02 15:56:03 by vmulder        #+#    #+#                */
+/*   Updated: 2019/05/17 19:24:10 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/printf.h"
-
 static char *ft_fix_precis(t_struct *val, char *s)
 {
 	char	*ns;
@@ -23,21 +22,45 @@ static char *ft_fix_precis(t_struct *val, char *s)
 	if (val->precis > (int)ft_strlen(s))
 		tp = val->precis - ft_strlen(s);
 	ns = (char *)malloc(sizeof(char) * tp + ft_strlen(s) + 1);
-	if (val->flagspace)
-		ns[i] = ' ';
-	if (val->flagplus)
-		ns[i] = '+';
-	if (val->d < 0)
-		ns[i] = '-';
-	if (val->d < 0 && val->precis && val->precis != -1)
-		tp++;
-	if (val->flagspace || val->flagplus || val->d < 0)
-		i++;
-	if (val->d == 0 && val->precis == 0)
+	if (val->ud == 0 && val->precis == 0)
 	{
 		ns[i] = '\0';
 		return (ns);
 	}
+	if (val->flaghasj && val->specifier == 'o')
+		ns[i] = '0';
+	if (val->flaghasj && val->specifier == 'x')
+	{
+		if (val->precis < 0 && val->width)
+		{
+			val->buf[val->tmpi] = '0';
+			val->buf[val->tmpi + 1] = 'x';
+		}
+		else
+		{
+			ns[i] = '0';
+			i++;
+			ns[i] = 'x';
+			i++;
+		}
+	}
+	if (val->flaghasj && val->specifier == 'X')
+	{
+		if (val->precis < 0 && val->width)
+		{
+			val->buf[val->tmpi] = '0';
+			val->buf[val->tmpi + 1] = 'X';
+		}
+		else
+		{
+			ns[i] = '0';
+			i++;
+			ns[i] = 'X';
+			i++;
+		}
+	}
+	if (val->flaghasj && !val->precis && val->specifier == 'o')
+		i++;
 	while (tp)
 	{
 		ns[i] = '0';
@@ -46,8 +69,6 @@ static char *ft_fix_precis(t_struct *val, char *s)
 	}
 	while (s[tp])
 	{
-		if (s[tp] == '-')
-			tp++;
 		ns[i] = s[tp];
 		tp++;
 		i++;
@@ -57,18 +78,25 @@ static char *ft_fix_precis(t_struct *val, char *s)
 	return (ns);
 }
 
-void	ft_cpy_to_buf_lft_int(t_struct *val)
+void		ft_cpy_to_buf_lft_int_u(t_struct *val)
 {
-	char *s;
-	char *ns;
-	int j;
+	int		b;
+	int		j;
+	char	*s;
+	char	*ns;
 
 	j = 0;
-	s = ft_itoa(val->d);
+	b = ft_supersayenbased(val);
+	if (val->specifier == 'X')
+		s = ft_itoa_base_u_x(val->ud, b);
+	else 
+	s = ft_itoa_base_u(val->ud, b);
 	ns = ft_fix_precis(val, s);
 	val->bi = val->tmpi;
 	while (ns[j])
 	{
+		if (val->bi + 1 == BUFF_FULL)
+			ft_clearbuf(val);
 		val->buf[val->bi] = ns[j];
 		val->bi++;
 		j++;
@@ -77,14 +105,19 @@ void	ft_cpy_to_buf_lft_int(t_struct *val)
 	free(ns);
 }
 
-void	ft_cpy_to_buf_int(t_struct *val)
+void		ft_cpy_to_buf_int_u(t_struct *val)
 {
+	int		b;
 	int		i;
 	int		j;
 	char	*s;
 	char	*ns;
-	
-	s = ft_itoa(val->d);
+
+	b = ft_supersayenbased(val);
+	if (val->specifier == 'X')
+		s = ft_itoa_base_u_x(val->ud, b);
+	else 
+		s = ft_itoa_base_u(val->ud, b);
 	ns = ft_fix_precis(val, s);
 	i = ft_strlen(ns);
 	j = 0;
@@ -93,18 +126,11 @@ void	ft_cpy_to_buf_int(t_struct *val)
 		val->bi = val->tmpi;
 	while (ns[j])
 	{
+		if (val->bi + 1 == BUFF_FULL)
+			ft_clearbuf(val);
 		val->buf[val->bi] = ns[j];
 		val->bi++;
 		j++;
 	}
 	free(ns);
-}
-
-int		ft_supersayenbased(t_struct *val)
-{
-	if (val->fmt[val->i] == 'o')
-		return (8);
-	else if (val->fmt[val->i] == 'x' || val->fmt[val->i] == 'X')
-		return (16);
-	return (10);
 }
