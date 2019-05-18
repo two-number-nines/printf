@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/22 15:33:29 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/18 19:22:43 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/18 20:41:05 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ void	ft_checkspecifier(t_struct *val, va_list *lp);
 void	ft_converter_c(t_struct *val, va_list *lp);
 void	ft_converter_s(t_struct *val, va_list *lp);
 void	ft_converter_p(t_struct *val, va_list *lp);
-int		ft_checkperc(t_struct *val);
 void	ft_converter_di(t_struct *val, va_list *lp);
 void	ft_converter_uox(t_struct *val, va_list *lp);
 void	ft_converter_f(t_struct *val, va_list *lp);

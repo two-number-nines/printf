@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/02 15:56:03 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/18 19:54:18 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/18 20:59:32 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static char *ft_fix_precis(t_struct *val, char *s)
 	ns = (char *)malloc(sizeof(char) * tp + ft_strlen(s) + 1);
 	if (val->ud == 0 && val->precis <= 0)
 	{
-		ns[i] = '\0';
+		ns[i] = '0';
 		return (ns);
 	}
 	if (val->flaghasj && val->specifier == 'o' && val->ud != 0)
