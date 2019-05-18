@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/22 15:42:55 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/17 22:27:24 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/18 16:20:00 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,27 +64,12 @@ int		ft_printf(const char *format, ...)
 	return (ret);
 }
 
-int		main(void)
+	int		main(void)
 {
-	ft_printf("my string: %dl", 200);
-	printf("\n");
-	printf("my string: %dl", 200);
-	printf("\n");
-	ft_printf("my string: %010dl", 200);
-		printf("\n");
-		printf("my string: %010dl", 200);
-		printf("\n");
-	ft_printf("my string: %+dl", 200);
-		printf("\n");
-		printf("my string: %+dl", 200);
-		printf("\n");
-	ft_printf("my string: % dl", 200);
-		printf("\n");
-		printf("my string: % dl", 200);
-		printf("\n");
-	ft_printf("my string: %dl", -200);
-		printf("\n");
-		printf("my string: %dl", -200);
-		printf("\n");
-	return (0);
+
+	//ft_printf("%llx", 9223372036854775807);
+	float i = 10.1089655; 
+	printf("The real printf %.5f\n", i);
+	ft_printf("My printf %.5f\n", i);
+	return 0;
 }

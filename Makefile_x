@@ -6,7 +6,7 @@
 #    By: vmulder <vmulder@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/22 14:18:40 by vmulder        #+#    #+#                 #
-#    Updated: 2019/05/17 20:10:41 by vmulder       ########   odam.nl          #
+#    Updated: 2019/05/18 14:53:40 by vmulder       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = libftprintf.a
 
 ## INCLUDES ##
 SRC_PATH = srcs
-HEADER = ../incl/printf.h
+HEADER = ../incl/
 
 ## SOURCES ##
 SOURCES = main.c checkflags.c checkwidth.c checkpresicion.c checklengmodif.c \

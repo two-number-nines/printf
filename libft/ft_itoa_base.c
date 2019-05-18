@@ -6,45 +6,62 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/02 15:20:57 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/06 14:05:47 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/18 16:18:16 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static long long	ft_power(int n, int po)
+static char	*itoa_helper(long *num, int base, int *i, int *count)
 {
-	if (po == 0)
-		return (1);
-	return (n * ft_power(n, po - 1));
+	char	*new;
+	long	tmp;
+	int		len;
+
+	len = 0;
+	if (*num < 0)
+	{
+		if (base == 10)
+			(*i)++;
+		(*num) *= -1;
+	}
+	tmp = *num;
+	while (tmp >= base)
+	{
+		tmp /= base;
+		len++;
+	}
+	len++;
+	*count = (len + (*i));
+	new = (char*)malloc(sizeof(char) * (*count) + 1);
+	return (new);
 }
 
-char				*ft_itoa_base(long long value, int base)
+char		*ft_itoa_base(int n, int base, int q)
 {
-	long long	nb;
-	int			length;
-	char		*result;
-	long long	sign;
-	long long	i;
+	char	*base_d;
+	char	*new;
+	long	num;
+	int		i;
+	int		count;
 
-	nb = value;
-	sign = 1;
-	length = 1;
-	while (ft_power(base, length) <= nb)
-		length++;
-	result = (char *)malloc(sizeof(char) * (length + 2));
 	i = 0;
-	while (i < length)
+	count = 0;
+	num = n;
+	if (q)
+		base_d = ft_strdup("0123456789ABCDEF");
+	else
+		base_d = ft_strdup("0123456789abcdef");
+	new = itoa_helper(&num, base, &i, &count);
+	if (i > 0)
+		new[0] = '-';
+	new[count] = '\0';
+	while (num >= base)
 	{
-		if (base <= 10 || (base > 10 && (nb % base) < 10))
-			result[i] = (nb % base) + 48;
-		else
-			result[i] = (nb % base) - 10 + 97;
-		nb /= base;
-		i++;
+		new[--count] = base_d[num % base];
+		num /= base;
 	}
-	if (sign < 0)
-		result[i++] = '-';
-	result[i] = '\0';
-	return (ft_strrev(result));
+	new[i] = base_d[num % base];
+	ft_strdel(&base_d);
+	return (new);
 }

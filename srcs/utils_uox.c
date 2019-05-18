@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/02 15:56:03 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/17 19:24:10 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/18 16:01:49 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,9 @@ void		ft_cpy_to_buf_lft_int_u(t_struct *val)
 	j = 0;
 	b = ft_supersayenbased(val);
 	if (val->specifier == 'X')
-		s = ft_itoa_base_u_x(val->ud, b);
+		s = ft_itoa_base_u(val->ud, b, 1);
 	else 
-	s = ft_itoa_base_u(val->ud, b);
+	s = ft_itoa_base_u(val->ud, b, 0);
 	ns = ft_fix_precis(val, s);
 	val->bi = val->tmpi;
 	while (ns[j])
@@ -115,9 +115,9 @@ void		ft_cpy_to_buf_int_u(t_struct *val)
 
 	b = ft_supersayenbased(val);
 	if (val->specifier == 'X')
-		s = ft_itoa_base_u_x(val->ud, b);
+		s = ft_itoa_base_u(val->ud, b, 1);
 	else 
-		s = ft_itoa_base_u(val->ud, b);
+		s = ft_itoa_base_u(val->ud, b, 0);
 	ns = ft_fix_precis(val, s);
 	i = ft_strlen(ns);
 	j = 0;

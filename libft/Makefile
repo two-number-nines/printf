@@ -6,7 +6,7 @@
 #    By: vmulder <vmulder@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/01/22 18:06:15 by vmulder        #+#    #+#                 #
-#    Updated: 2019/05/05 14:27:54 by vmulder       ########   odam.nl          #
+#    Updated: 2019/05/18 16:06:59 by vmulder       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ SRC = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 	ft_skipwhite.c ft_strrev.c ft_islower.c ft_isupper.c \
 	ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c \
 	ft_lstmap.c ft_atoi_base.c ft_itoa_base_u.c ft_itoa_base.c \
-	ft_getdigits_u.c ft_itoa_base_u_x.c
+	ft_getdigits_u.c
 
 OBJ = ft_memset.o ft_bzero.o ft_memcpy.o ft_memccpy.o ft_memmove.o \
 	ft_memchr.o ft_memcmp.o ft_strlen.o ft_strdup.o ft_strcpy.o \
@@ -46,12 +46,12 @@ OBJ = ft_memset.o ft_bzero.o ft_memcpy.o ft_memccpy.o ft_memmove.o \
 	ft_skipwhite.o ft_strrev.o ft_islower.o ft_isupper.o \
 	ft_lstnew.o	ft_lstdelone.o ft_lstdel.o ft_lstadd.o ft_lstiter.o \
 	ft_lstmap.o ft_atoi_base.o ft_itoa_base_u.o ft_itoa_base.o \
-	ft_getdigits_u.o ft_itoa_base_u_x.o
+	ft_getdigits_u.o
 
 all: $(NAME)
 
 $(NAME):
-	@gcc $(FLAGS) $(SRC) -I $(INCL)
+	@gcc -g $(FLAGS) $(SRC) -I $(INCL)
 	@ar rc $(NAME) $(OBJ)
 
 clean:

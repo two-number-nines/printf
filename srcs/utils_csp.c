@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/30 11:49:10 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/17 22:10:37 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/18 16:14:52 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char		*long_to_a_string(long long l)
 	s1 = (char *)malloc(sizeof(char) * 3);
 	ft_bzero(s1, 3);
 	ft_strcat(s1, "0x");
-	s = ft_itoa_base(l, 16);
+	s = ft_itoa_base(l, 16, 0);
 	s1 = ft_strcat(s1, s);
 	free(s);
 	return (s1);
