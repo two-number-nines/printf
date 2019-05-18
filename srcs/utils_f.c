@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/06 11:04:02 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/17 19:18:58 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/18 18:36:41 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,27 +40,31 @@ char	*ft_comb_part(t_struct *val, long long pleft, char *sr)
 			b++;
 		}
 	}
-	t = i - 1;
+	t = i - 2;
 	i--;
-	if (ns[i] > '5')
+	if (ns[i] >= '5' || (ns[i - 1] >= 5 &&  ns[i] != '0'))
 	{
-		while (ns[i] == '9')
+		i--;
+		if (ns[i] >= '5')
 		{
-			ns[i] = '0';
-			i--;
+			while (ns[i] == '9')
+				{
+					ns[i] = '0';
+					i--;
+				}
+			if (ns[i - 1] >= '0' && ns[i - 1] <= '9')
+				ns[i - 1] += 1;
+			if (ns[i - 1] == '.')
+			{
+				i -= 2;
+				while (ns[i] == '9')
+				{
+					ns[i] = '0';
+					i--;
+				}
+				ns[i] += 1;
+			}
 		}
-	if (ns[i - 1] >= '0' && ns[i - 1] <= '9')
-		ns[i - 1] += 1;
-	if (ns[i - 1] == '.')
-	{
-		i -= 2;
-		while (ns[i] == '9')
-		{
-			ns[i] = '0';
-			i--;
-		}
-		ns[i] += 1;
-	}
 	}
 	ns[t] = '\0';
 	free(sl);
@@ -77,9 +81,9 @@ char *ft_combine_part(t_struct *val, double n, long long pleft)
 	i = 0;
 	bzero(tempstr, 1000);
 	if (val->precis == -1)
-		d = 7;
+		d = 8;
 	else
-		d = val->precis + 1;
+		d = val->precis + 2;
 	while (d)
 	{
 		n = n * 10;

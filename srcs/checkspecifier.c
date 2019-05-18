@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/25 14:43:00 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/17 22:05:42 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/18 19:25:22 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ void	ft_checkspecifier(t_struct *val, va_list *lp)
 		ft_converter_s(val, lp);
 	else if (val->fmt[val->i] == 'p')
 		ft_converter_p(val, lp);
-	else if (val->fmt[val->i] == '%')
-		ft_converter_perc(val);
 	else if (val->fmt[val->i] == 'd' || val->fmt[val->i] == 'i')
 		ft_converter_di(val, lp);
 	else if (val->fmt[val->i] == 'u' || val->fmt[val->i] == 'x' ||
@@ -33,5 +31,7 @@ void	ft_checkspecifier(t_struct *val, va_list *lp)
 	}
 	else if (val->fmt[val->i] == 'f')
 		ft_converter_f(val, lp);
+	else
+		ft_converter_perc(val);
 	val->i++;
 }

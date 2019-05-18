@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/26 17:52:57 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/17 22:06:41 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/18 19:09:21 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,4 @@ void	ft_converter_p(t_struct *val, va_list *lp)
 		ft_cpy_to_buf_lft(val, s);
 	else
 		ft_cpy_to_buf(val, s);
-}
-
-void	ft_converter_perc(t_struct *val)
-{
-	val->buf[val->bi] = '%';
 }

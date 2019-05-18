@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/22 15:42:55 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/18 16:20:00 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/18 19:55:09 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	arghandeler(t_struct *val, va_list *lp)
 {
+	if (ft_checkperc(val))
+		return ;
 	ft_checkflags(val);
 	ft_checkwidth(val, lp);
 	ft_checkprecision(val, lp);
@@ -66,10 +68,8 @@ int		ft_printf(const char *format, ...)
 
 	int		main(void)
 {
-
-	//ft_printf("%llx", 9223372036854775807);
-	float i = 10.1089655; 
-	printf("The real printf %.5f\n", i);
-	ft_printf("My printf %.5f\n", i);
+	ft_printf("@moulitest: %5.x %5.0x", 0, 0);
+	printf("\n");
+	printf("@moulitest: %5.x %5.0x", 0, 0);
 	return 0;
 }

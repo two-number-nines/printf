@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/02 15:56:03 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/18 16:01:49 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/18 19:54:18 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,44 +22,29 @@ static char *ft_fix_precis(t_struct *val, char *s)
 	if (val->precis > (int)ft_strlen(s))
 		tp = val->precis - ft_strlen(s);
 	ns = (char *)malloc(sizeof(char) * tp + ft_strlen(s) + 1);
-	if (val->ud == 0 && val->precis == 0)
+	if (val->ud == 0 && val->precis <= 0)
 	{
 		ns[i] = '\0';
 		return (ns);
 	}
-	if (val->flaghasj && val->specifier == 'o')
+	if (val->flaghasj && val->specifier == 'o' && val->ud != 0)
 		ns[i] = '0';
-	if (val->flaghasj && val->specifier == 'x')
+	if (val->flaghasj && val->specifier == 'x' && val->ud != 0)
 	{
-		if (val->precis < 0 && val->width)
-		{
-			val->buf[val->tmpi] = '0';
-			val->buf[val->tmpi + 1] = 'x';
-		}
-		else
-		{
-			ns[i] = '0';
-			i++;
-			ns[i] = 'x';
-			i++;
-		}
+		ns[i] = '0';
+		i++;
+		ns[i] = 'x';
+		i++;
 	}
-	if (val->flaghasj && val->specifier == 'X')
+	if (val->flaghasj && val->specifier == 'X' && val->ud != 0)
 	{
-		if (val->precis < 0 && val->width)
-		{
-			val->buf[val->tmpi] = '0';
-			val->buf[val->tmpi + 1] = 'X';
-		}
-		else
-		{
-			ns[i] = '0';
-			i++;
-			ns[i] = 'X';
-			i++;
-		}
+		ns[i] = '0';
+		i++;
+		ns[i] = 'X';
+		i++;
+
 	}
-	if (val->flaghasj && !val->precis && val->specifier == 'o')
+	if (val->flaghasj && !val->precis && val->specifier == 'o' && val->ud != 0)
 		i++;
 	while (tp)
 	{

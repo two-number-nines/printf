@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/30 18:12:10 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/17 22:07:18 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/18 19:22:22 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,20 @@ void	ft_converter_di(t_struct *val, va_list *lp)
 		ft_cpy_to_buf_lft_int(val);
 	else
 		ft_cpy_to_buf_int(val);
+}
+
+void	ft_converter_perc(t_struct *val)
+{
+	int		tmp;
+
+	tmp = 0;
+	put_width_buf(val);
+	if (val->flagmin)
+		val->bi = val->tmpi;
+	else
+		val->bi -= 1;
+	val->buf[val->bi] = '%';
+	val->bi++;
+	if (val->flagmin)
+		val->bi = val->width + val->tmpi;
 }
