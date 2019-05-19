@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/01 12:11:58 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/17 21:28:43 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/19 17:04:09 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void			reset_flags(t_struct *val)
 	val->flaghasj = 0;
 	val->flagnull = 0;
 	val->width = 0;
-	val->precis = 0;
+	val->precis = -1;
 	val->length = 0;
 	val->hh = 0;
 	val->h = 0;

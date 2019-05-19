@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/30 11:49:10 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/18 16:14:52 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/19 16:18:35 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,8 @@ void		ft_cpy_to_buf(t_struct *val, char *s)
 	ns = precis_str(val, s);
 	i = ft_strlen(ns);
 	j = 0;
-	val->bi -= i;
+	if (val->bi > val->tmpi && val->bi - i >= 0)
+		val->bi -= i;
 	while (ns[j])
 	{
 		if (val->bi + 1 == BUFF_FULL)

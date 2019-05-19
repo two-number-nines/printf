@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/26 17:52:57 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/18 19:09:21 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/19 17:20:31 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,19 @@
 
 void	ft_converter_c(t_struct *val, va_list *lp)
 {
+	char c;
+	
+	c = va_arg(*lp, int);
+	if (c == 0)
+		val->ret += 1;
 	if (val->width)
 		put_width_buf(val);
 	if (val->flagmin)
-		val->buf[val->tmpi] = va_arg(*lp, int);
+		val->buf[val->tmpi] = c;
+	else if (val->width > 0)
+		val->buf[val->bi - 1] = c;
 	else
-		val->buf[val->bi - 1] = va_arg(*lp, int);
+		val->buf[val->bi] = c;
 }
 
 void	ft_converter_s(t_struct *val, va_list *lp)
@@ -30,6 +37,10 @@ void	ft_converter_s(t_struct *val, va_list *lp)
 
 	i = 0;
 	s = va_arg(*lp, char*);
+	if (s == NULL)
+		s = "(null)";
+	if (val->precis == 0)
+		return ;
 	tmp = 0;
 	if (val->width)
 		put_width_buf(val);

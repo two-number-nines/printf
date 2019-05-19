@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/22 15:42:55 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/18 21:01:17 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/19 19:12:21 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,12 @@ void	ft_strloop(t_struct *val, va_list *lp)
 			reset_flags(val);
 			val->bi = (int)ft_strlen(val->buf);
 		}
-		val->buf[val->bi] = val->fmt[val->i];
-		val->i++;
-		val->bi++;
+		else
+		{
+			val->buf[val->bi] = val->fmt[val->i];
+			val->i++;
+			val->bi++;
+		}
 	}
 	ft_clearbuf(val);
 }
@@ -63,12 +66,17 @@ int		ft_printf(const char *format, ...)
 	va_end(lp);
 	return (ret);
 }
-/*
+
 int		main(void)
 {
-	ft_printf("%x", 0);
+	
+	//ft_printf("M%c %.s", NULL, "string");
+	//printf("\n");
+	//printf("R%c %.s", NULL, "string");
 	printf("\n");
-	printf("%x", 0);
+	ft_printf("@moulitest: %#.x %#.0x", 0, 0);
+	printf("\n");
+	printf("@moulitest: %#.x %#.0x", 0, 0);
+	printf("\n");
 	return 0;
 }
-*/

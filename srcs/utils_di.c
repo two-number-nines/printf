@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/30 18:25:24 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/17 22:22:12 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/19 19:02:44 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,27 @@ static char 	*ft_fix_helper(t_struct *val, char *s)
 	char	*ns;
 
 	ns = (char *)malloc(sizeof(char) * val->precis + ft_strlen(s) + 1);
-	ft_bzero(ns, (size_t)(val->precis + ft_strlen(s) + 1));
-	if (val->flagspace)
-		ns[0] = ' ';
-	if (val->flagplus)
-		ns[0] = '+';
-	if (val->d < 0)
-		ns[0] = '-';
+	ft_bzero(ns, (size_t)(val->precis + ft_strlen(s) + 10));
+	if (val->flagnull)
+	{
+		if (val->flagspace)
+			val->buf[val->tmpi] = ' ';
+		if (val->flagplus)
+			val->buf[val->tmpi] = '+';
+		if (val->d < 0)
+			val->buf[val->tmpi] = '-';
+	}
+	else
+	{
+		if (val->flagspace)
+			ns[0] = ' ';
+		if (val->flagplus)
+			ns[0] = '+';
+		if (val->d < 0)
+			ns[0] = '-';
+		
+	}
+	
 	return (ns);
 }
 
@@ -40,7 +54,7 @@ static char		*ft_fix_precis(t_struct *val, char *s)
 	ns = ft_fix_helper(val, s);
 	if (val->d < 0 && val->precis && val->precis != -1)
 		tp++;
-	if (val->flagspace || val->flagplus || val->d < 0)
+	if ((val->flagspace || val->flagplus || val->d < 0) && !val->flagnull)
 		i++;
 	if (val->d == 0 && val->precis == 0)
 	{
