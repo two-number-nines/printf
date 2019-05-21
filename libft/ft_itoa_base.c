@@ -6,17 +6,17 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/02 15:20:57 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/18 16:18:16 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/21 18:39:12 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*itoa_helper(long *num, int base, int *i, int *count)
+static char	*itoa_helper(long long *num, int base, int *i, int *count)
 {
-	char	*new;
-	long	tmp;
-	int		len;
+	char		*new;
+	long long	tmp;
+	int			len;
 
 	len = 0;
 	if (*num < 0)
@@ -37,13 +37,13 @@ static char	*itoa_helper(long *num, int base, int *i, int *count)
 	return (new);
 }
 
-char		*ft_itoa_base(int n, int base, int q)
+char		*ft_itoa_base(long long n, int base, int q)
 {
-	char	*base_d;
-	char	*new;
-	long	num;
-	int		i;
-	int		count;
+	char		*base_d;
+	char		*new;
+	long long	num;
+	int			i;
+	int			count;
 
 	i = 0;
 	count = 0;
@@ -54,7 +54,9 @@ char		*ft_itoa_base(int n, int base, int q)
 		base_d = ft_strdup("0123456789abcdef");
 	new = itoa_helper(&num, base, &i, &count);
 	if (i > 0)
+	{
 		new[0] = '-';
+	}
 	new[count] = '\0';
 	while (num >= base)
 	{

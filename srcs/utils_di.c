@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/30 18:25:24 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/20 18:49:00 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/21 18:39:19 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static char		*ft_fix_precis(t_struct *val, char *s)
 		tp++;
 		i++;
 	}
-	free(s);
+//	free(s);
 	return (ns);
 }
 
@@ -87,7 +87,13 @@ void			ft_cpy_to_buf_lft_int(t_struct *val)
 	int		j;
 
 	j = 0;
-	s = ft_itoa(val->d);
+	if (val->d == (double)-9223372036854775808.0f)
+	{
+		s = (char *)malloc(sizeof(char) * 21)
+		s = "-9223372036854775808";
+	}
+	else	
+		s = ft_itoa(val->d);
 	ns = ft_fix_precis(val, s);
 	val->bi = val->tmpi;
 	while (ns[j])

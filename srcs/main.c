@@ -6,11 +6,12 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/22 15:42:55 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/20 20:20:16 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/21 14:36:37 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/printf.h"
+#include <limits.h>
 
 void	arghandeler(t_struct *val, va_list *lp)
 {
@@ -69,10 +70,12 @@ int		ft_printf(const char *format, ...)
 
 int		main(void)
 {
-	
-	ft_printf("o%-10cl", 0);
+	int i;
+
+	i = 0;
+	ft_printf("%ld", LONG_MIN);
 	printf("\n");
-	printf("%d", printf("o%-10cl", 0));
+	printf("%ld", LONG_MIN);
 	printf("\n");
 	// ft_printf("%+.100d \n", 2000);
 	// printf("\n");

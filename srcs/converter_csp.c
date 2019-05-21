@@ -6,24 +6,12 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/26 17:52:57 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/20 20:31:46 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/21 13:52:30 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/printf.h"
 //this is what i was working on
-static void		ft_write_null(t_struct *val)
-{
-	int i;
-
-	i = 0;
-	if (val->tc)
-	{
-		val->ret = write(1, val->buf, ft_strlen(val->buf));
-		val->ret += write(1, &val->buf[val->tc + 1], ft_strlen(val->buf));
-		val->bi = val->ret;
-	}
-}
 
 void	ft_converter_c(t_struct *val, va_list *lp)
 {
@@ -33,20 +21,17 @@ void	ft_converter_c(t_struct *val, va_list *lp)
 	if (c == 0)
 	{
 		val->tc = 1;
+		c = -1;
 		val->ret += 1;
 	}
 	if (val->width)
 		put_width_buf(val);
 	if (val->flagmin)
-	{
-		val->tc = val->tmpi;
 		val->buf[val->tmpi] = c;
-	}
 	else if (val->width > 0)
 		val->buf[val->bi - 1] = c;
 	else
-		val->buf[val->bi] = c;
-	ft_write_null(val);
+		val->tc = val->buf[val->bi] = c;
 }
 
 void	ft_converter_s(t_struct *val, va_list *lp)
