@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/30 18:25:24 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/21 18:39:19 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/21 18:43:09 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static char		*ft_fix_precis(t_struct *val, char *s)
 		tp++;
 		i++;
 	}
-//	free(s);
+	free(s);
 	return (ns);
 }
 
@@ -89,8 +89,9 @@ void			ft_cpy_to_buf_lft_int(t_struct *val)
 	j = 0;
 	if (val->d == (double)-9223372036854775808.0f)
 	{
-		s = (char *)malloc(sizeof(char) * 21)
-		s = "-9223372036854775808";
+		s = (char *)malloc(sizeof(char) * 21);
+		ft_bzero(s, 21);
+		ft_strcat(s, "-9223372036854775808");
 	}
 	else	
 		s = ft_itoa(val->d);
@@ -115,10 +116,17 @@ void			ft_cpy_to_buf_int(t_struct *val)
 	char	*s;
 	char	*ns;
 
-	s = ft_itoa(val->d);
+	j = 0;
+	if (val->d == (double)-9223372036854775808.0f)
+	{
+		s = (char *)malloc(sizeof(char) * 21);
+		ft_bzero(s, 21);
+		ft_strcat(s, "-9223372036854775808");
+	}
+	else	
+		s = ft_itoa(val->d);
 	ns = ft_fix_precis(val, s);
 	i = ft_strlen(ns);
-	j = 0;
 	val->bi -= i;
 	if (val->bi < val->tmpi)
 		val->bi = val->tmpi;

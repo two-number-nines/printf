@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/26 17:52:57 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/21 13:52:30 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/21 18:47:13 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	ft_converter_c(t_struct *val, va_list *lp)
 	{
 		val->tc = 1;
 		c = -1;
-		val->ret += 1;
 	}
 	if (val->width)
 		put_width_buf(val);

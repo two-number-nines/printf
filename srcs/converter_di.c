@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/30 18:12:10 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/21 14:24:52 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/22 12:44:30 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,12 @@ void	ft_converter_perc(t_struct *val)
 	int		tmp;
 
 	tmp = 0;
-	if (val->fmt[val->i + 1] == '%')
+	if (val->fmt[val->i + 1] == '%' && !val->width)
+	{
+		val->buf[val->bi] = '%';
+		val->bi++;
 		return ;
+	}
 	put_width_buf(val);
 	if (val->flagmin)
 		val->bi = val->tmpi;

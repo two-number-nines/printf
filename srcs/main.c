@@ -6,12 +6,12 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/22 15:42:55 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/21 14:36:37 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/22 13:43:32 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/printf.h"
-#include <limits.h>
+#include <limits.h>////
 
 void	arghandeler(t_struct *val, va_list *lp)
 {
@@ -70,16 +70,18 @@ int		ft_printf(const char *format, ...)
 
 int		main(void)
 {
-	int i;
+	unsigned long i;
 
-	i = 0;
-	ft_printf("%ld", LONG_MIN);
+	//i = 340;
+	//(void)i;
+	//b = -100;
+	ft_printf("%p\n", &i);
 	printf("\n");
-	printf("%ld", LONG_MIN);
+	printf("%p\n", &i);
 	printf("\n");
-	// ft_printf("%+.100d \n", 2000);
-	// printf("\n");
-	// printf("%+.100d \n", 2000);
+	ft_printf("%+.100d \n", 2000);
+	printf("\n");
+	printf("%+.100d \n", 2000);
 	// printf("\n");
 	// printf("\n");
 	// printf("%12.10d %0.1d, %10d, % d, %+d, ", 42, 42, 42, 42, 42);
@@ -101,5 +103,10 @@ int		main(void)
 	// printf("\n");
 	// printf("%00d", -42);
 	// printf("\n");
+	ft_printf("%c %s %p %i %o %u %x %X", 'c', "hi", &i, 5000, 5000, 5000, 5000, 5000);
+	printf("\n");
+	printf("%c %s %p %i %o %u %x %X", 'c', "hi", &i, 5000, 5000, 5000, 5000, 5000);
+	while(1);
 	return 0;
 }
+
