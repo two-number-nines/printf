@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/30 11:49:10 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/22 13:52:25 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/22 16:36:14 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ static char	*precis_str(t_struct *val, char *s)
 
 	j = 0;
 	i = (int)ft_strlen(s);
-	ns = (char *)malloc(sizeof(char) * i + 1000);
+	ns = (char *)malloc(sizeof(char) * i + 1);
+	ft_bzero(ns, i + 1);
 	if (val->precis < i && val->precis > 0)
 		i = val->precis;
 	while (i)
@@ -71,6 +72,8 @@ void		ft_cpy_to_buf(t_struct *val, char *s)
 	char	*ns;
 
 	ns = precis_str(val, s);
+	if (val->fmt[val->i] == 'p')
+		free(s);
 	if (val->specifier == 'p')
 		free(s);
 	i = ft_strlen(ns);
@@ -95,7 +98,7 @@ void		ft_cpy_to_buf_lft(t_struct *val, char *s)
 
 	j = 0;
 	ns = precis_str(val, s);
-	if (val->specifier == 'p')
+	if (val->fmt[val->i] == 'p')
 		free(s);
 	val->bi = val->tmpi;
 	while (ns[j])

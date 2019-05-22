@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/06 11:04:02 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/18 18:36:41 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/22 16:59:28 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ char	*ft_comb_part(t_struct *val, long long pleft, char *sr)
 	b = 0;
 	sl = ft_itoa(pleft);
 	ns = (char *)malloc(sizeof(char) * 100);
+	bzero(ns, 100);
 	while(sl[i])
 	{
 		ns[i] = sl[i];
@@ -86,6 +87,8 @@ char *ft_combine_part(t_struct *val, double n, long long pleft)
 		d = val->precis + 2;
 	while (d)
 	{
+		if (n < 0)
+			n *= -1;
 		n = n * 10;
 		tempstr[i] = (int)n + '0';
 		n = n - (int)n;

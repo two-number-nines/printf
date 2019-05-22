@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/02 15:56:03 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/20 10:44:46 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/22 16:38:18 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static char *ft_fix_precis(t_struct *val, char *s)
 	if (val->precis > (int)ft_strlen(s))
 		tp = val->precis - ft_strlen(s);
 	ns = (char *)malloc(sizeof(char) * tp + ft_strlen(s) + 1);
+	bzero(ns, tp + ft_strlen(s) + 1);
 	if (val->ud == 0 && val->precis <= 0 && val->flaghasj == 0)
 	{
 		if (val->precis < 0)

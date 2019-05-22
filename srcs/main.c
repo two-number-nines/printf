@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/22 15:42:55 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/22 13:43:32 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/22 17:06:19 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,46 +67,46 @@ int		ft_printf(const char *format, ...)
 	va_end(lp);
 	return (ret);
 }
-
+/*
 int		main(void)
 {
-	unsigned long i;
+	long long i;
 
+	i = -9223372036854775;
 	//i = 340;
 	//(void)i;
 	//b = -100;
-	ft_printf("%p\n", &i);
+
 	printf("\n");
-	printf("%p\n", &i);
 	printf("\n");
-	ft_printf("%+.100d \n", 2000);
+	ft_printf("%p \n", &i);
+	printf("%p \n", &i);
+	ft_printf("{%f}", 1444565444646.6465424242242454654);
 	printf("\n");
-	printf("%+.100d \n", 2000);
-	// printf("\n");
-	// printf("\n");
-	// printf("%12.10d %0.1d, %10d, % d, %+d, ", 42, 42, 42, 42, 42);
-	// printf("\n");
-	// ft_printf("%12.10d %0.1d, %10d, % d, %+d, ",42, 42, 42, 42, 42);
-	//  printf("\n");
-	//  printf("\n");
-	// ft_printf("%03.2d, %12.10d %0.1d, %10d, % d, %+d, ", -10, -42, -42, -42, -42, -42);
-	// printf("\n");
-	// printf("%03.2d, %12.10d %0.1d, %10d, % d, %+d, ", -10, -42, -42, -42, -42, -42);
-	// printf("\n");
-	// printf("\n");
-	// ft_printf("%0d", -42);
-	// printf("\n");
-	// printf("%0d", -42);
-	// printf("\n");
-	// printf("\n");
-	// ft_printf("%00d", -42);
-	// printf("\n");
-	// printf("%00d", -42);
-	// printf("\n");
-	ft_printf("%c %s %p %i %o %u %x %X", 'c', "hi", &i, 5000, 5000, 5000, 5000, 5000);
+	printf("{%f}", 1444565444646.6465424242242454654);
 	printf("\n");
-	printf("%c %s %p %i %o %u %x %X", 'c', "hi", &i, 5000, 5000, 5000, 5000, 5000);
-	while(1);
+	printf("%+12.10d %0.1d, %10d, % d, %+d, ", 42, 42, 42, 42, 42);
+	printf("\n");
+	ft_printf("%+12.10d %0.1d, %10d, % d, %+d, ",42, 42, 42, 42, 42);
+	 printf("\n");
+	 printf("\n");
+	ft_printf("%03.2d, %12.10d %0.1d, %10d, % d, %+d, ", -10, -42, -42, -42, -42, -42);
+	printf("\n");
+	printf("%03.2d, %12.10d %0.1d, %10d, % d, %+d, ", -10, -42, -42, -42, -42, -42);
+	printf("\n");
+	printf("\n");
+	ft_printf("%0d", -42);
+	printf("\n");
+	printf("%0d", -42);
+	printf("\n");
+	printf("\n");
+	ft_printf("%00d", -42);
+	printf("\n");
+	printf("%00d", -42);
+	printf("\n");
+	ft_printf("%c %s %p %i %o %lld %x %X %%%%hallooo", 'c', "hi", &i, 5000, 5000, -92233720368547758, 502300, 502300);
+	printf("\n");
+	printf("%c %s %p %i %o %ld %x %X %%%%hallooo", 'c', "hi", &i, 5000, 5000, -92233720368547758, 502300, 502300);
 	return 0;
 }
-
+*/
