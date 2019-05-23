@@ -6,11 +6,18 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/02 15:20:57 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/21 18:39:12 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/23 11:51:38 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static void	itoa_init(int *i, int *count, long long *n, long long *num)
+{
+	(*i) = 0;
+	(*count) = 0;
+	(*num) = (*n);
+}
 
 static char	*itoa_helper(long long *num, int base, int *i, int *count)
 {
@@ -45,9 +52,7 @@ char		*ft_itoa_base(long long n, int base, int q)
 	int			i;
 	int			count;
 
-	i = 0;
-	count = 0;
-	num = n;
+	itoa_init(&i, &count, &n, &num);
 	if (q)
 		base_d = ft_strdup("0123456789ABCDEF");
 	else

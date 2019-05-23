@@ -6,17 +6,16 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/26 17:52:57 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/22 14:01:39 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/23 11:33:29 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/printf.h"
-//this is what i was working on
 
 void	ft_converter_c(t_struct *val, va_list *lp)
 {
 	char c;
-	
+
 	c = va_arg(*lp, int);
 	if (c == 0)
 	{
@@ -30,7 +29,7 @@ void	ft_converter_c(t_struct *val, va_list *lp)
 	else if (val->width > 0)
 		val->buf[val->bi - 1] = c;
 	else
-		val->tc = val->buf[val->bi] = c;
+		val->buf[val->bi] = c;
 }
 
 void	ft_converter_s(t_struct *val, va_list *lp)

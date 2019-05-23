@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/06 10:34:36 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/17 22:07:54 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/23 11:25:15 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int		ft_getdigits_f(long double c)
 
 static void		ft_typecaster_f(t_struct *val)
 {
-	if (val->L)
+	if (val->cl)
 		val->f = (long double)val->f;
 	else
 		val->f = (double)val->f;

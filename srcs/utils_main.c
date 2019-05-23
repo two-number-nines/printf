@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/01 12:11:58 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/21 14:17:09 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/23 11:34:08 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,26 +39,26 @@ void			reset_flags(t_struct *val)
 	val->h = 0;
 	val->l = 0;
 	val->ll = 0;
-	val->L = 0;
+	val->cl = 0;
 }
 
 void			ft_clearbuf(t_struct *val)
 {
-		int i;
+	int i;
 
-		if (val->tc)
-		{
-			i = ft_strlen(val->buf);
-			ft_set_null(val);
-			val->ret += i;
-			write(1, val->buf, i);
-		}
-		else
-		{
-			val->ret = val->ret + ft_strlen(val->buf);
-			write(1, val->buf, ft_strlen(val->buf));
-		}
-		val->bi = 0;
-		ft_bzero(val->buf, ft_strlen(val->buf));
-		val->tc = 0;
+	if (val->tc)
+	{
+		i = ft_strlen(val->buf);
+		ft_set_null(val);
+		val->ret += i;
+		write(1, val->buf, i);
+	}
+	else
+	{
+		val->ret = val->ret + ft_strlen(val->buf);
+		write(1, val->buf, ft_strlen(val->buf));
+	}
+	val->bi = 0;
+	ft_bzero(val->buf, ft_strlen(val->buf));
+	val->tc = 0;
 }

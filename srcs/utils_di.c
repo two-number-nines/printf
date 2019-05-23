@@ -6,13 +6,13 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/30 18:25:24 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/21 18:43:09 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/23 14:28:09 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/printf.h"
 
-static char 	*ft_fix_helper(t_struct *val, char *s)
+static char		*ft_fix_helper(t_struct *val, char *s)
 {
 	char	*ns;
 
@@ -52,30 +52,18 @@ static char		*ft_fix_precis(t_struct *val, char *s)
 	ns = ft_fix_helper(val, s);
 	if (val->d < 0 && val->precis && val->precis != -1)
 	{
-	if (val->precis >= (int)ft_strlen(s))
-		tp++;
+		if (val->precis >= (int)ft_strlen(s))
+			tp++;
 	}
-	if ((val->flagspace || val->flagplus || val->d < 0) && (!val->flagnull || (val->flagnull && val->precis >= 0) || (val->flagnull && !val->width)))
+	if ((val->flagspace || val->flagplus || val->d < 0) && (!val->flagnull || \
+		(val->flagnull && val->precis >= 0) || (val->flagnull && !val->width)))
 		i++;
 	if (val->d == 0 && val->precis == 0)
 	{
 		ns[i] = '\0';
 		return (ns);
 	}
-	while (tp)
-	{
-		ns[i] = '0';
-		tp--;
-		i++;
-	}
-	while (s[tp])
-	{
-		if (s[tp] == '-')
-			tp++;
-		ns[i] = s[tp];
-		tp++;
-		i++;
-	}
+	while_lp_pr_neg(&tp, &ns, &i, &s);
 	free(s);
 	return (ns);
 }
@@ -93,18 +81,11 @@ void			ft_cpy_to_buf_lft_int(t_struct *val)
 		ft_bzero(s, 21);
 		ft_strcat(s, "-9223372036854775808");
 	}
-	else	
+	else
 		s = ft_itoa(val->d);
 	ns = ft_fix_precis(val, s);
 	val->bi = val->tmpi;
-	while (ns[j])
-	{
-		if (val->bi == BUFF_FULL)
-			ft_clearbuf(val);
-		val->buf[val->bi] = ns[j];
-		val->bi++;
-		j++;
-	}
+	ft_while_loop(val, ns);
 	val->bi = val->width + val->tmpi;
 	free(ns);
 }
@@ -123,21 +104,14 @@ void			ft_cpy_to_buf_int(t_struct *val)
 		ft_bzero(s, 21);
 		ft_strcat(s, "-9223372036854775808");
 	}
-	else	
+	else
 		s = ft_itoa(val->d);
 	ns = ft_fix_precis(val, s);
 	i = ft_strlen(ns);
 	val->bi -= i;
 	if (val->bi < val->tmpi)
 		val->bi = val->tmpi;
-	while (ns[j])
-	{
-		if (val->bi + 1 == BUFF_FULL)
-			ft_clearbuf(val);
-		val->buf[val->bi] = ns[j];
-		val->bi++;
-		j++;
-	}
+	ft_while_loop(val, ns);
 	free(ns);
 }
 

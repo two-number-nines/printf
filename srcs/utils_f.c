@@ -6,81 +6,76 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/06 11:04:02 by vmulder        #+#    #+#                */
-/*   Updated: 2019/05/22 16:59:28 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/23 15:53:50 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/printf.h"
 
-char	*ft_comb_part(t_struct *val, long long pleft, char *sr)
+static void	ft_comb_part_helper(char **ns, int i, int t)
 {
-	char *sl;
-	char *ns;
-	int i;
-	int b;
-	int t;
-	
+	if ((*ns)[i] >= '5' || ((*ns)[i - 1] >= 5 && (*ns)[i] != '0'))
+	{
+		i--;
+		if ((*ns)[i] >= '5')
+		{
+			while ((*ns)[i] == '9')
+			{
+				(*ns)[i] = '0';
+				i--;
+			}
+			if ((*ns)[i - 1] >= '0' && (*ns)[i - 1] <= '9')
+				(*ns)[i - 1] += 1;
+			if ((*ns)[i - 1] == '.')
+			{
+				i -= 2;
+				while ((*ns)[i] == '9')
+				{
+					(*ns)[i] = '0';
+					i--;
+				}
+				(*ns)[i] += 1;
+			}
+		}
+	}
+	(*ns)[t] = '\0';
+}
+
+char		*ft_comb_part(t_struct *val, long long pleft, char *sr)
+{
+	char	*sl;
+	char	*ns;
+	int		i;
+	int		b;
+	int		t;
+
 	i = 0;
 	b = 0;
 	sl = ft_itoa(pleft);
-	ns = (char *)malloc(sizeof(char) * 100);
-	bzero(ns, 100);
-	while(sl[i])
+	ns = (char *)malloc(sizeof(char) * 2001);
+	bzero(ns, 2001);
+	while (sl[i])
 	{
 		ns[i] = sl[i];
 		i++;
 	}
-	if (sr[0] != '0' || val->precis || val->flaghasj)
-	{
-		ns[i] = '.';
-		i++;
-		while (sr[b] && sr[0] != '0')
-		{
-			ns[i] = sr[b];
-			i++;
-			b++;
-		}
-	}
+	while_lp_f(val, &ns, sr, &i);
 	t = i - 2;
 	i--;
-	if (ns[i] >= '5' || (ns[i - 1] >= 5 &&  ns[i] != '0'))
-	{
-		i--;
-		if (ns[i] >= '5')
-		{
-			while (ns[i] == '9')
-				{
-					ns[i] = '0';
-					i--;
-				}
-			if (ns[i - 1] >= '0' && ns[i - 1] <= '9')
-				ns[i - 1] += 1;
-			if (ns[i - 1] == '.')
-			{
-				i -= 2;
-				while (ns[i] == '9')
-				{
-					ns[i] = '0';
-					i--;
-				}
-				ns[i] += 1;
-			}
-		}
-	}
-	ns[t] = '\0';
+	ft_comb_part_helper(&ns, i, t);
 	free(sl);
 	return (ns);
 }
 
-char *ft_combine_part(t_struct *val, double n, long long pleft)
+char		*ft_combine_part(t_struct *val, double n, long long pleft)
 {
 	int			d;
 	int			i;
 	char		*ns;
-	char		tempstr[1000];
+	char		tempstr[2001];
 
 	i = 0;
-	bzero(tempstr, 1000);
+	bzero(tempstr, 2001);
 	if (val->precis == -1)
 		d = 8;
 	else
@@ -99,13 +94,13 @@ char *ft_combine_part(t_struct *val, double n, long long pleft)
 	return (ns);
 }
 
-void	ft_cpy_to_buf_int_f(t_struct *val)
+void		ft_cpy_to_buf_int_f(t_struct *val)
 {
 	long long	pleft;
 	double		leftover;
 	char		*ns;
 	int			j;
-	
+
 	pleft = (long long)val->f;
 	leftover = val->f - (double)pleft;
 	ns = ft_combine_part(val, leftover, pleft);
@@ -114,25 +109,18 @@ void	ft_cpy_to_buf_int_f(t_struct *val)
 	if (val->bi < val->tmpi)
 		val->bi = val->tmpi;
 	j = 0;
-	while (ns[j])
-	{
-		if (val->bi + 1 == BUFF_FULL)
-			ft_clearbuf(val);
-		val->buf[val->bi] = ns[j];
-		val->bi++;
-		j++;
-	}
+	ft_while_loop(val, ns);
 	free(ns);
 }
 
-void	ft_cpy_to_buf_lft_int_f(t_struct *val)
+void		ft_cpy_to_buf_lft_int_f(t_struct *val)
 {
 	long long	pleft;
 	double		leftover;
 	char		*ns;
 	int			j;
 
-	j = 0;	
+	j = 0;
 	pleft = (long long)val->f;
 	leftover = val->f - (double)pleft;
 	ns = ft_combine_part(val, leftover, pleft);
@@ -144,14 +132,7 @@ void	ft_cpy_to_buf_lft_int_f(t_struct *val)
 		val->buf[val->bi] = '+';
 		val->bi++;
 	}
-	while (ns[j])
-	{
-		if (val->bi + 1 == BUFF_FULL)
-			ft_clearbuf(val);
-		val->buf[val->bi] = ns[j];
-		val->bi++;
-		j++;
-	}
+	ft_while_loop(val, ns);
 	val->bi = val->width + val->tmpi;
 	free(ns);
 }

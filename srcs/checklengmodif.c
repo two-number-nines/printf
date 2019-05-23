@@ -6,7 +6,7 @@
 /*   By: vmulder <vmulder@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/25 12:39:53 by vmulder        #+#    #+#                */
-/*   Updated: 2019/04/25 15:51:00 by vmulder       ########   odam.nl         */
+/*   Updated: 2019/05/23 11:24:25 by vmulder       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_checklenmodif(t_struct *val)
 		else
 			val->l = 1;
 	else if (val->fmt[val->i] == 'L')
-		val->L = 1;
+		val->cl = 1;
 }
 
 void	ft_checklenmod(t_struct *val)

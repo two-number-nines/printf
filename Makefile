@@ -6,7 +6,7 @@
 #    By: vmulder <vmulder@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/22 14:18:40 by vmulder        #+#    #+#                 #
-#    Updated: 2019/05/18 14:53:40 by vmulder       ########   odam.nl          #
+#    Updated: 2019/05/23 13:41:13 by vmulder       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ HEADER = ../incl/
 ## SOURCES ##
 SOURCES = main.c checkflags.c checkwidth.c checkpresicion.c checklengmodif.c \
 			checkspecifier.c converter_csp.c utils_csp.c converter_di.c utils_di.c \
-			utils_main.c converter_uox.c utils_uox.c utils_f.c converter_f.c
+			utils_main.c converter_uox.c utils_uox.c utils_f.c converter_f.c \
+			whileloops.c
 
 ## OBJECTS ##
 SRCS = $(addprefix $(SRC_PATH)/,$(SOURCES))
