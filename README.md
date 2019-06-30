@@ -11,18 +11,22 @@ gcc main.c libftprintf.a
 ### Conversion characters
 ```
 specifier         Output                                    Example
-d or i	          Signed decimal integer	                  392
-u	                Unsigned decimal integer	                7235
-o	                Unsigned octal	                          610
-x	                Unsigned hexadecimal integer	            7fa
-X	                Unsigned hexadecimal integer (uppercase)	7FA
-f	                Decimal floating point, lowercase	        392.65
-F	                Decimal floating point, uppercase	        392.65
+d or i            Signed decimal integer                     392
+u                 Unsigned decimal integer                  7235
+o                 Unsigned octal                            610
+x                 Unsigned hexadecimal integer              7fa
+X                 Unsigned hexadecimal integer (uppercase)  7FA
+f                 Decimal floating point, lowercase         392.65
+F                 Decimal floating point, uppercase         392.65
 ```
 ### Flags
 ```
-c - character
-bla bla
+flags   description
+-       Left-justify within the given field width; Right justification is the default (see width sub-specifier).
++       Forces to preceed the result with a plus or minus sign (+ or -) even for positive numbers. By default, only negative         numbers are preceded with a - sign.
+(space) If no sign is going to be written, a blank space is inserted before the value.
+#       Used with o, x or X specifiers the value is preceeded with 0, 0x or 0X respectively for values different than zero.
+0       Left-pads the number with zeroes (0) instead of spaces when padding is specified (see width sub-specifier).
 ```
 it manages:
 ```
