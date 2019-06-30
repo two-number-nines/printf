@@ -10,7 +10,7 @@ gcc main.c libftprintf.a
 ## Functionality
 ### Conversion characters
 
-**Specifier       Output                                    Example**
+**Specifier         Output                                    Example**
 ```
 d or i            Signed decimal integer                     392
 u                 Unsigned decimal integer                  7235
