@@ -8,6 +8,16 @@ gcc main.c libftprintf.a
 ```
 
 ## Functionality
+### Conversion characters
+```
+c - character
+bla bla
+```
+### Flags
+```
+c - character
+bla bla
+```
 it manages:
 ```
 • The following conversions: csp
