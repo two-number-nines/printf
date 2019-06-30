@@ -10,6 +10,10 @@ it manages:
 • You must manage the minimum field-width
 • You must manage the precision
 
+Allowed flags:
 ```
-adsadsasdasd
+0 - puts this 
++ - puts that
+- - puts that
+
 ```
