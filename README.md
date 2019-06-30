@@ -1,6 +1,13 @@
 # printf
 I recoded a part of the the libc’s printf function.
 
+## Getting started
+bla bla run make and to get libftprint.a and then compile it with your source file bla bla
+```
+gcc main.c libftprintf.a
+```
+
+## Functionality
 it manages:
 ```
 • The following conversions: csp
