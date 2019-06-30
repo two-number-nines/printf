@@ -28,13 +28,3 @@ flags   description
 #       Used with o, x or X specifiers the value is preceeded with 0, 0x or 0X respectively for values different than zero.
 0       Left-pads the number with zeroes (0) instead of spaces when padding is specified (see width sub-specifier).
 ```
-it manages:
-```
-• The following conversions: csp
-• The following conversions: diouxX with the following flags: hh, h, l and ll.
-• The following conversion: f with the following flags: l and L.
-• %%
-• The flags #0-+ and space
-• You must manage the minimum field-width
-• You must manage the precision
-```
